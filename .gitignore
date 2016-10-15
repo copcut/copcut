@@ -1,3 +1,4 @@
 bin
 *.pem
 .DS_STORE
+node_modules/
