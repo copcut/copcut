@@ -4,7 +4,7 @@ html,body{
 }
 .initial-bg-img{
 	height: 100%;
-	background-image: url("pics/barber.jpg");
+	background-image: url("barber.jpg");
 	background-size: cover;
 }
 .navbar-default{
