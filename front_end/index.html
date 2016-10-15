@@ -4,6 +4,12 @@
 	<title>Barbers on Demand</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="copcut.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Oxygen" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="typed.js" type="text/javascript"></script>
+ 	<link rel="stylesheet" type="text/css" href="typed.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
@@ -12,7 +18,7 @@
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand lead" href="#">CopCut</a>
+				<a class="navbar-brand" href="#">CopCut</a>
 			</div>
 			<ul class= "nav navbar-nav">
 				<li><a href="#">How It Works</a></li>
@@ -25,10 +31,46 @@
 	    	</ul>
 		</div>
 	</nav>
-	<h1>COP A HAIRCUT</h1>
+	<div class="container header-width-left">
+		<h1 class="initial-bg-heading" style="display: inline;">COP A </h1>
+		<div id="typed-strings">
+		<h1>HAIRSTYLE</h1>
+		<h1>HAIRCUT</h1>
+		<h1>LIFESTYLE</h1>
+		</div>
+		<h1 id="typed" class="initial-bg-heading" style="white-space:pre;display: inline;"></h1>
+		<h3 class='tab'>Search for a barber most suitable for your needs.</h3>
+		<form>
+		<div class="form-group">
+		  <select class="form-control" id="sel1" value="Choose a Hairstyle">
+		  	<option selected disabled hidden>Choose a hairstyle!</option>
+		    <option>Men's Haircut</option>
+		    <option>Women's Hair</option>
+		  </select>
+		</div>
+		<button type="submit" class="btn btn-success">Search</button>
+		</form>
+	</div>
 </div><!--initial-bg-->
 </div><!--initial-bg-img-->
+<div class="container-fluid" id="steps">
+	<div class="container-fluid" id="instructions">
+		<div class="instruct-text"><img src="pics/question-mark.png"><h2>Answer a few Questions!</h2><p>We will match you with a barber that best suits your needs and wants!</p></div>
+		<div class="instruct-text"><img src="pics/search.png"><h2>Pick a Barber!</h2><p>Choose the barber who you like most! You'll be provided with a wide variety of information.</p></div>
+		<div class="instruct-text"><img src="pics/barber-pole.png"><h2>Book A Session!</h2><p>It's as simple as that! Make sure to leave a review, and upload pictures of your cuts to promote your new barber.</div>
+	</div>
+	<div class="container-fluid" id="img-instruct">
+	<img src="pics/temp.jpg">
+	</div>
+</div>
+</div>
+<div id=reviews>
+	<h1>CUTS THAT SATISFIED MANY</h1>
+	<article><img src="pics/h1.jpg"><p>'I really enjoyed getting a cut from CopCut! He lined up my taper forreaaaalz'</br> -Nick Zeta, Sophomore '19</p>
+	</article>
+	<article><img src="pics/h2.jpg"><p>'Campus Cuts never really took my hair seriously, so I decided to turn to CopCut. Now I can finally line up my fade with a ruler.'</br> -Moby Larryhill, Senior '16</p></article>
+	<article><img src="pics/h3.jpg"><p>'I was always insecure about my yellow hair, but CopCut helped me find the right barber that brought my confidence right back!'</br> -Danisha Cowdirt, Junior '18</p></article>
+</div>
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </html>
