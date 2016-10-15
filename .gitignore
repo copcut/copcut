@@ -1,4 +1,5 @@
 bin
 *.pem
 .DS_STORE
+.gitignore
 node_modules
