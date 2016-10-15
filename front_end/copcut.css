@@ -4,10 +4,13 @@ html,body{
 	color: white;
 	font-family: "Montserrat";
 }
-a:hover{
-	transition: all 0.2s ease;
-	-moz-transition: all 0.2s ease;
-	-o-transition: all 0.2s ease;
+a{
+	transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+}
+a:hover,a:visited{
+	text-decoration: none;
 }
 .initial-bg-img{
 	height: 100%;
@@ -105,12 +108,16 @@ a:hover{
 	background:-webkit-linear-gradient(#1fced4,#49b7dc);
 	/**background-color: #49b7dc;**/
 }
+.block{
+	display: block;
+	margin-bottom: 5%;
+}
 footer{
 	padding: 5% 0%;
 }
 article{
 	padding: 3% 0% 0% 0%;
-	width: 33%;
+	width: 32%;
 	text-align: center;
 	display: inline-block;
 	vertical-align: top;
@@ -123,4 +130,26 @@ article img {
 article p{
 	width: 70%;
 	margin: auto;
+}
+footer{
+	color: #838994;
+	padding: 3% 10% 0% 20%;
+}
+footer a{
+	color: #00b2e2;
+	margin-right: 10%;
+}
+#policy{
+	width: 65%;
+}
+#social{
+	width: 25%;
+}
+#social img{
+	width: 14%;
+}
+#policy,#social{
+	margin: 0;
+	display: inline-block;
+	vertical-align: top;
 }
