@@ -5,7 +5,7 @@
   "scripts": {
     "startserver": "forever start build/server.js",
     "stopserver": "forever stop build/server.js",
-    "stopserver": "forever restart build/server.js"
+    "restartserver": "forever restart build/server.js"
   },
   "author": "",
   "license": "ISC",
