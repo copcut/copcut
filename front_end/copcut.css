@@ -1,39 +1,8 @@
-html,body{
-	height: 100%;
-	padding: 0;
-	color: white;
-	font-family: "Montserrat";
-}
-a{
-	transition: all 0.3s ease;
-	-moz-transition: all 0.3s ease;
-	-o-transition: all 0.3s ease;
-}
-a:hover,a:visited{
-	text-decoration: none;
-}
-.initial-bg-img{
-	height: 100%;
-	background-image: url("pics/barber.jpg");
-	background-size: cover;
-}
-.navbar-default{
-	padding: 1%;
-	background:none;
-	border:none;
-}
-.navbar-default .navbar-brand{
-	font-size: 36px;
-	font-family: 'Quicksand', sans-serif;
-	}
-.navbar-default .navbar-brand,.navbar-default .navbar-nav>li>a{
-	color: white;
-}
-.navbar-default .navbar-nav>li>a{
-	font-size: 16px;
-}
+nd:none;
+
 .initial-bg{
 	height: 100%;
+	padding: 0;
 	background-color: rgba(0,0,0,0.7);
 }
 .initial-bg-heading{
@@ -112,9 +81,6 @@ a:hover,a:visited{
 	display: block;
 	margin-bottom: 5%;
 }
-footer{
-	padding: 5% 0%;
-}
 article{
 	padding: 3% 0% 0% 0%;
 	width: 32%;
@@ -130,26 +96,4 @@ article img {
 article p{
 	width: 70%;
 	margin: auto;
-}
-footer{
-	color: #838994;
-	padding: 3% 10% 0% 20%;
-}
-footer a{
-	color: #00b2e2;
-	margin-right: 10%;
-}
-#policy{
-	width: 65%;
-}
-#social{
-	width: 25%;
-}
-#social img{
-	width: 14%;
-}
-#policy,#social{
-	margin: 0;
-	display: inline-block;
-	vertical-align: top;
 }
