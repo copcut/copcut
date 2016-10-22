@@ -11,6 +11,8 @@ import flash from 'connect-flash'
 import Database from './models/database' 
 import User from './models/user'
 
+Database.connect();
+
 const app = express();
 const LocalStrategy = passportLocal.Strategy;
 
@@ -62,5 +64,7 @@ passport.use(new LocalStrategy((username, password, done) => {
 	}).asCallback(done, { spread: true });
 }));
 
-app.use(express.static(__dirname+'/designs'));
-app.listen(3000);
+Database.initialize();
+
+//app.use(express.static(__dirname+'/designs'));
+//app.listen(3000);

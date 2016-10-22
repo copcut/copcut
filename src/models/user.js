@@ -2,6 +2,7 @@ import Database from './database'
 import Promise from 'bluebird'
 import bcrypt from 'bcryptjs'
 
+//Add promise support to bcrypt
 Promise.promisifyAll(bcrypt);
 
 const User = () => {
