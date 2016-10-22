@@ -2,7 +2,7 @@
  * Created by Victor on 10/14/2016.
  */
 
-var Child = require('./Child');
+import Child from "./app/Child.js"
 var Parent = React.createComponent({
    render: function(){
        return(
