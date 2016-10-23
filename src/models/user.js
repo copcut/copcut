@@ -13,36 +13,51 @@ const User = () => {
 	}
 
 	const setPasswordHash = data => {
-		return genHash(data.password).then(passwordHash => {
-			data.password = passwordHash;
+		if(data.password) {
+			return genHash(data.password).then(passwordHash => {
+				data.password = passwordHash;
+				return Promise.resolve(data);
+			});
+		}
+		else {
 			return Promise.resolve(data);
-		});
+		}
 	}
 
 	return {
-		addUser(data) {
-			return setPasswordHash(data).then(data => {
-				return Promise.using(Database.getConnection(), connection => {
-					return connection.queryAsync('INSERT INTO users SET ?', data);
-				});
-			});
+		getIdFromUsername(username) {
+			return Promise.using(Database.getConnection(), connection => {
+				return connection.queryAsync('SELECT id FROM users WHERE username=?', username);
+			}).then(data => Promise.resolve(data[0].id));
 		},
 
-		updateUser(username, data) {
-			let promise;
+		addUser(data) {
+			const userData = {
+				username: data.username,
+				firstname: data.firstname,
+				middlename: data.middlename,
+				lastname: data.lastname,
+				password: data.password,
+				email: data.email,
+				birthday: data.birthday,
+				gender: data.gender
+			};
 
-			if(data.password) {
-				promise = setPasswordHash(data);
-			}
-			else {
-				promise = Promise.resolve(data);
-			}
-			
-			return promise.then(values => {
+			return setPasswordHash(userData).then(value => {
+				return Promise.using(Database.getConnection(), connection => {
+					return connection.queryAsync('INSERT INTO users SET ?', value);
+				});
+			}).then(rowDataPacket => Promise.resolve(rowDataPacket.insertId));
+		},
+
+		updateUser(username, data) {			
+			const updateUserQuery = values => {
 				return Promise.using(Database.getConnection(), connection => {
 					return connection.queryAsync('UPDATE users SET ? where username=?', [values, username]);
 				});
-			});
+			}
+			
+			return setPasswordHash(data).then(updateUserQuery);
 		},
 
 		removeUser(username) {
@@ -51,24 +66,27 @@ const User = () => {
 			});
 		},
 
-		getUser(username) {
+		removeUserById(id) {
 			return Promise.using(Database.getConnection(), connection => {
-				return connection.queryAsync('SELECT * FROM users WHERE username=?', username).then(data => data[0]);
+				return connection.queryAsync('DELETE FROM users WHERE id=?', id);
 			});
 		},
 
+		getUser(username) {
+			return Promise.using(Database.getConnection(), connection => {
+				return connection.queryAsync('SELECT * FROM users WHERE username=?', username);
+			}).then(data => Promise.resolve(data[0]));
+		},
+
 		checkPassword(username, password) {
-			const comparePassword = passwordHash => {
-				return bcrypt.compareAsync(password, passwordHash);
-			}
-
-			const databaseQuery = () => {
+			const getPasswordQuery = (username) => {
 				return Promise.using(Database.getConnection(), connection => {
-					return connection.queryAsync('SELECT password FROM users WHERE username=?', [username]).then(data => data[0].password);
-				});
+					return connection.queryAsync('SELECT password FROM users WHERE username=?', username);
+				}).then(data => Promise.resolve(data[0].password));
 			}
 
-			return databaseQuery().then(comparePassword);	
+			return getPasswordQuery(username)
+				   .then(passwordHash => bcrypt.compareAsync(password, passwordHash));	
 		}
 	}
 }

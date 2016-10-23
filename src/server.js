@@ -10,6 +10,7 @@ import flash from 'connect-flash'
 
 import Database from './models/database' 
 import User from './models/user'
+import Barber from './models/barber'
 
 Database.connect();
 
@@ -64,7 +65,48 @@ passport.use(new LocalStrategy((username, password, done) => {
 	}).asCallback(done, { spread: true });
 }));
 
-Database.initialize();
+//Database.initialize();
 
+/*
+User.addUser({
+	username: "ankushrayabhari6", 
+	firstname: "Ankush", 
+	middlename: null, 
+	lastname: "Rayabhari", 
+	password: "lol", 
+	email: "ankush03@gmail.com", 
+	birthday: new Date(1998, 6, 24),  
+	gender: "M"
+}).then(console.log);
+*/
+//User.removeUserById(5);
+/*
+Barber.addBarber({
+	username: "testbarber1",
+	firstname: "barber",
+	middlename: null,
+	lastname: "barber",
+	password: "barber",
+	email: "barber1@barber.com",
+	birthday: new Date(1998, 6, 24),
+	gender: "F",
+	reviewnumber: 0,
+	address: "Anacapa Hall",
+	city: "Santa Barbara",
+	country: "USA",
+	postcode: "95129",
+	phonenumber: "14085551212",
+	yearscut: 1,
+	description: "holla at me for dank cuts"
+}).then(console.log);
+*/
+//Barber.removeBarber("testbarber");
+//Barber.getBarbersFromCut("Pomp").then(console.log);
+/*
+Barber.updateBarber("testbarber", {
+	description: "holla at me for dank cuts 420 blaze"
+});
+*/
+//User.getIdFromUsername("ankushrayabhari5").then(console.log);
 //app.use(express.static(__dirname+'/designs'));
 //app.listen(3000);
