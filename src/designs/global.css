@@ -2,6 +2,7 @@ html,body{
 	height: 100%;
 	padding: 0;
 	color: white;
+	background-color: white;
 	font-family: "Montserrat";
 }
 a{
@@ -48,23 +49,136 @@ a:hover,a:visited{
 }
 footer{
 	color: #838994;
-	padding: 3% 10% 0% 20%;
+	padding: 3% 20% 0% 20%;
 }
 footer a{
 	color: #00b2e2;
-	margin-right: 10%;
+	margin-right: 5%;
 }
 #policy{
 	width: 65%;
 }
 #social{
-	width: 25%;
+	width: 34%;
 }
 #social img{
-	width: 14%;
+	width: 13%;
+}
+#social img:hover{
+	opacity: 0.6;
 }
 #policy,#social{
 	margin: 0;
 	display: inline-block;
 	vertical-align: top;
+}
+#results,#toggle-options{
+	color: black;
+	margin-top: 50px; /*adjusts content below to not hide behind fixed position header*/
+}
+#results img{
+	width: 50%;
+	border-radius: 50%;
+	margin-right: 2%;
+}
+#results div,#toggle-options div,#results,#toggle-options{
+	vertical-align: top;
+	display: inline-block;
+}
+#toggle-options{
+	width: 20%;
+	height: 100%;
+	border-left: 1px solid #d3d3d3;
+	display: inline-block;
+	position: fixed;
+	right: 0;
+}
+#results{
+	width: 80%;
+	padding: 2% 0 2% 1%;
+	display: inline-block;
+}
+.descr{
+	width: 100%;
+}
+.descr h4{
+	margin-bottom: 0;
+}
+.descr p,.descr span{
+	font-size: 0.9vw;
+}
+.rate{
+	text-align: center;
+}
+.heading{
+	margin-bottom: 10px;
+}
+#results .star-ratings-css {
+  unicode-bidi: bidi-override;
+  color: #c5c5c5;
+  font-size: 25px;
+  height: 25px;
+  width: 100px;
+  margin:0 auto;
+  position: relative;
+  display: block;
+  margin-bottom: 20px;
+  text-shadow: 0px 1px 0 #a2a2a2;
+}
+.star-ratings-css-top {
+    color: #e7711b;
+    padding: 0;
+    position: absolute;
+    z-index: 1;
+    display: block;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+.star-ratings-css-bottom{
+  	padding: 0;
+    display: block;
+    z-index: 0;
+}
+.barber-display{
+	width: 30%;
+	padding: 3% 2%;
+	margin: 3% 1%;
+	border-bottom: 1px solid #d3d3d3;
+	text-align: center;
+	display: inline-block;
+}
+.btn{
+	font-size: 1vw;
+}
+.results-heading{
+	display: block;
+	text-align: center;
+}
+#search input{
+	width: 80%;
+	display: inline;
+	border:none;
+	border-radius: 0;
+}
+#search input:focus{
+	outline: none;
+}
+#search .glyphicon{
+	width: 10%;
+}
+#search{
+	border-bottom: 1px solid #d3d3d3;
+	width: 100%;
+	padding: 7%;
+}
+.options{
+	padding: 0% 10%;
+}
+#toggle-options h4{
+	color: rgba(0,0,0,0.54);
+}
+#toggle-options .option-selector,.option-selector md-select, .options md-checkbox{
+	margin-top: 0;
+	display: block;
 }
