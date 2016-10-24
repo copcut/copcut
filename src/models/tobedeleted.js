@@ -1,6 +1,8 @@
 /**
  * Created by Victor on 10/21/2016.
  */
+
+/*
 CREATE TABLE users (
     id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(36) NOT NULL UNIQUE,
