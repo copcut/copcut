@@ -3,6 +3,12 @@ import User from './user'
 import Promise from 'bluebird'
 
 const Barber = () => {
+	const getReviewData = id => {
+		return Promise.using(Database.getConnection(), connection => {
+			return connection.queryAsync('SELECT reviewnumber, averagerating FROM barbers WHERE id=?', id);
+		}).then(data => Promise.resolve(data[0]));
+	};
+
 	return {
 		addBarber(data) {
 			const userData = {
@@ -46,7 +52,7 @@ const Barber = () => {
 		updateBarber(username, data) {
 			const updateInBarbers = id => {
 				return Promise.using(Database.getConnection(), connection => {
-					return connection.queryAsync('UPDATE barbers SET ? where id=?', [data, id]);
+					return connection.queryAsync('UPDATE barbers SET ? WHERE id=?', [data, id]);
 				});
 			}
 			
@@ -65,8 +71,23 @@ const Barber = () => {
 
 		removeBarber(username) {
 			//on delete user it will cascade
-			return User.getIdFromUsername(username)
-				   .then(id => User.removeUserById(id));
+			return User.getIdFromUsername(username).then(id => User.removeUserById(id));
+		},
+
+		updateReviewData(id, rating, oldRating, adding) {
+
+			const updateQuery = data => {
+				let totalStars = data.reviewnumber * data.averagerating;
+				totalStars += (rating-oldRating);
+				const reviewnumber = (adding) ? data.reviewnumber+1 : data.reviewnumber;
+				const averagerating = totalStars / reviewnumber;
+
+				return Promise.using(Database.getConnection(), connection => {
+					return connection.queryAsync('UPDATE barbers SET reviewnumber=?, averagerating=? WHERE id=?', [reviewnumber, averagerating, id]);
+				});
+			}
+			
+			return getReviewData(id).then(updateQuery);
 		},
 
 		getBarbersFromCut(cut) {

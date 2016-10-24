@@ -79,7 +79,7 @@ const User = () => {
 		},
 
 		checkPassword(username, password) {
-			const getPasswordQuery = (username) => {
+			const getPasswordQuery = username => {
 				return Promise.using(Database.getConnection(), connection => {
 					return connection.queryAsync('SELECT password FROM users WHERE username=?', username);
 				}).then(data => Promise.resolve(data[0].password));

@@ -11,6 +11,7 @@ import flash from 'connect-flash'
 import Database from './models/database' 
 import User from './models/user'
 import Barber from './models/barber'
+import Rating from './models/rating'
 
 Database.connect();
 
@@ -78,9 +79,9 @@ User.addUser({
 	birthday: new Date(1998, 6, 24),  
 	gender: "M"
 }).then(console.log);
-*/
-//User.removeUserById(5);
-/*
+
+User.removeUserById(5);
+
 Barber.addBarber({
 	username: "testbarber1",
 	firstname: "barber",
@@ -99,14 +100,31 @@ Barber.addBarber({
 	yearscut: 1,
 	description: "holla at me for dank cuts"
 }).then(console.log);
-*/
-//Barber.removeBarber("testbarber");
-//Barber.getBarbersFromCut("Pomp").then(console.log);
-/*
+
+Barber.removeBarber("testbarber");
+Barber.getBarbersFromCut("Pomp").then(console.log);
+
 Barber.updateBarber("testbarber", {
 	description: "holla at me for dank cuts 420 blaze"
 });
+
+User.getIdFromUsername("ankushrayabhari5").then(console.log);
+
+const ratingData = {
+	barberid: 10,
+	userid: 3,
+	rating: 3,
+	reviewContent: "mofo fucked up my hair slightly less"    
+};
+Rating.addCut(ratingData).then(console.log);
 */
-//User.getIdFromUsername("ankushrayabhari5").then(console.log);
+/*
+Rating.updateReview(5, {
+	rating: 2,
+	reviewContent: "mofo fucked up my hair slightly less"
+}).then(console.log);
+*/
+//Barber.getReviewData(10).then(console.log);
+
 //app.use(express.static(__dirname+'/designs'));
 //app.listen(3000);
