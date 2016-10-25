@@ -39,6 +39,7 @@ a:hover,a:visited{
 	background-color: white;
 	z-index: 5;
 	position: fixed;
+	top: 0;
 	box-shadow: 0 1px #FFFFFF inset, 0 1px 3px rgba(34, 25, 25, 0.4);
 }
 #header.header a{
@@ -72,9 +73,11 @@ footer a{
 	display: inline-block;
 	vertical-align: top;
 }
+#results{
+	margin-top: 50px; /*adjusts content below to not hide behind fixed position header*/
+}
 #results,#toggle-options{
 	color: black;
-	margin-top: 50px; /*adjusts content below to not hide behind fixed position header*/
 }
 #results img{
 	width: 50%;
@@ -89,9 +92,9 @@ footer a{
 	width: 20%;
 	height: 100%;
 	border-left: 1px solid #d3d3d3;
-	display: inline-block;
 	position: fixed;
 	right: 0;
+	top: 50px;
 }
 #results{
 	width: 80%;
@@ -174,11 +177,18 @@ footer a{
 }
 .options{
 	padding: 0% 10%;
+	width: 100%;
 }
 #toggle-options h4{
 	color: rgba(0,0,0,0.54);
 }
 #toggle-options .option-selector,.option-selector md-select, .options md-checkbox{
 	margin-top: 0;
+	/*display: block;*/
+}
+md-checkbox{
 	display: block;
+}
+#toggle-options md-datepicker div{
+	vertical-align: middle; /*fixed issue with calendar icon and  input field being unaligned
 }

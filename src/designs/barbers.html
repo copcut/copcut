@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
 </head>
-<body>
+<body ng-app="BlankApp">
 
 <nav class="navbar navbar-default header" id="header">
 	<div class="container-fluid">
@@ -180,22 +180,22 @@
 		</div>
 
 	</div>
-
-	<div id="toggle-options">
+	<div flex id="toggle-options">
 		<form>
 			<fieldset>
 				<div id="search">
 					<span class="glyphicon glyphicon-search"></span>
 					<input type="text" placeholder="Search" name="srch-term">
                 </div>
-                <div class="options" ng-app="BlankApp">
+                <div class="options">
+
                 	<div class="option-checkbox">
 	                	<h4>Price</h4>
 	                	<md-checkbox ng-model="under11" aria-label="Under $11">Under $11</md-checkbox>
 	                	<md-checkbox ng-model="between1122" aria-label="$11-$20">$11-$20</md-checkbox>
 						<md-checkbox ng-model="above21" aria-label="$21 and above">$21 and above</md-checkbox>
 					</div>
-					<div class="option-selector">
+					<div class="option-selector" style="">
 						<h4>Sorting</h4>
 						<md-select ng-model="hairstyle" placeholder="Hairstyle" class="md-no-underline" md-no-asterisk="true">
 				        	<md-option value="default" selected>Popular</md-option>
@@ -213,7 +213,10 @@
 				        	<md-option value="buzzcut">Buzzcut</md-option>
 				        	<md-option value="bowlcut">Bowlcut</md-option>
 	        			</md-select>
-        			</div>
+        			<div layout="row" div class="md-inline-form">
+        				<h4>Choose a day</h4>
+						<md-datepicker ng-model="ts"></md-datepicker>
+					</div>
                 </div>
 			</fieldset>
 		</form>
@@ -233,6 +236,8 @@
 </footer>
 </body>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js" 
+ integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
  <!-- Angular Material requires Angular.js Libraries -->
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
@@ -247,7 +252,6 @@
      * You must include the dependency on 'ngMaterial' 
      */
      angular.module('BlankApp',['ngMaterial']);
-
  </script>
   
 </html>
