@@ -57,3 +57,5 @@ CREATE TABLE messages (
     FOREIGN KEY (user1) REFERENCES users(id),
     FOREIGN KEY (user2) REFERENCES users(id)
 );
+
+    */
