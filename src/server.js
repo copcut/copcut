@@ -12,6 +12,7 @@ import Database from './models/database'
 import User from './models/user'
 import Barber from './models/barber'
 import Rating from './models/rating'
+import Message from './models/message'
 
 Database.connect();
 
@@ -125,6 +126,9 @@ Rating.updateReview(5, {
 }).then(console.log);
 */
 //Barber.getReviewData(10).then(console.log);
+//Message.addMessage("ankushrayabhari5", "testbarber1", "").then(console.log);
+//Message.getConversationByUsername("testbarber1", "ankushrayabhari5").then(console.log);
+
 
 //app.use(express.static(__dirname+'/designs'));
 //app.listen(3000);
