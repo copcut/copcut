@@ -91,7 +91,7 @@ class Price extends React.Component{
         }
     }
     priceFilter(){
-
+        
     }
     render(){
         return(
