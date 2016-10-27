@@ -78,6 +78,22 @@ const User = () => {
 			}).then(data => Promise.resolve(data[0]));
 		},
 
+		checkUsernameExists(username) {
+			return Promise.using(Database.getConnection(), connection => {
+				return connection.queryAsync('SELECT * FROM users WHERE username=?', username);
+			}).then(data => {
+				return !(data.length == 0);
+			});
+		},
+
+		checkEmailExists(email) {
+			return Promise.using(Database.getConnection(), connection => {
+				return connection.queryAsync('SELECT * FROM users WHERE email=?', email);
+			}).then(data => {
+				return !(data.length == 0);
+			});
+		},
+
 		checkPassword(username, password) {
 			const getPasswordQuery = username => {
 				return Promise.using(Database.getConnection(), connection => {
