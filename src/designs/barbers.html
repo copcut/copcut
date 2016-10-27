@@ -9,13 +9,22 @@
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
 </head>
-<body>
+<body ng-app="BlankApp">
+
 <nav class="navbar navbar-default header" id="header">
 	<div class="container-fluid">
 		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="true" aria-controls="navbar">
+				<span class="sr-only">Toggle Nav</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
 			<a class="navbar-brand" href="#" style="color: black;" id="logo">CopCut</a>
 		</div>
+		<div id="navbar" class="navbar-collapse collapse" aria-expanded="true">
 		<ul class= "nav navbar-nav">
 			<li><a href="#">How It Works</a></li>
 			<li><a href="#">About</a></li>
@@ -25,23 +34,224 @@
 		    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
 		    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
     	</ul>
+    	</div>
 	</div>
 </nav>
-<div id="content">
-	
-</div>
+
+	<div id="results">
+		<span class="results-heading">Viewing 749 of 749 barbers near you.</span>
+		<div class="barber-display">
+			<img src="pics/h1.jpg">
+			<div class="descr">
+				<div class="heading">
+					<h4>James Smith <small>Goleta, CA</small></h4>
+					<span style="color:grey;">10 years cutting hair</span>
+				</div>
+				<p>I've been cutting hair since I was born. I love touching people's silky smooth hair. Please choose me as your barber. You will not regret!!</p>
+			</div>
+			<div class="rate"> 
+				<h2>$13/cut</h2> 
+				<div class="star-ratings-css">
+			  		<div class="star-ratings-css-top" style="width: 94%">
+			  			<span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+			  		</div>
+			  		<div class="star-ratings-css-bottom">
+			  			<span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+			  		</div>
+				</div>
+				<button class="btn btn-success">Schedule Now</button>
+				<button class="btn btn-info">Profile</button>
+			</div>
+		</div>
+		<div class="barber-display">
+			<img src="pics/h1.jpg">
+			<div class="descr">
+				<div class="heading">
+					<h4>James Smith <small>Goleta, CA</small></h4>
+					<span style="color:grey;">10 years cutting hair</span>
+				</div>
+				<p>I've been cutting hair since I was born. I love touching people's silky smooth hair. Please choose me as your barber. You will not regret!!</p>
+			</div>
+			<div class="rate"> 
+				<h2>$13/cut</h2> 
+				<div class="star-ratings-css">
+			  		<div class="star-ratings-css-top" style="width: 94%">
+			  			<span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+			  		</div>
+			  		<div class="star-ratings-css-bottom">
+			  			<span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+			  		</div>
+				</div>
+				<button class="btn btn-success">Schedule Now</button>
+				<button class="btn btn-info">Profile</button>
+			</div>
+		</div>
+		<div class="barber-display">
+			<img src="pics/h1.jpg">
+			<div class="descr">
+				<div class="heading">
+					<h4>James Smith <small>Goleta, CA</small></h4>
+					<span style="color:grey;">10 years cutting hair</span>
+				</div>
+				<p>I've been cutting hair since I was born. I love touching people's silky smooth hair. Please choose me as your barber. You will not regret!!</p>
+			</div>
+			<div class="rate"> 
+				<h2>$13/cut</h2> 
+				<div class="star-ratings-css">
+			  		<div class="star-ratings-css-top" style="width: 94%">
+			  			<span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+			  		</div>
+			  		<div class="star-ratings-css-bottom">
+			  			<span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+			  		</div>
+				</div>
+				<button class="btn btn-success">Schedule Now</button>
+				<button class="btn btn-info">Profile</button>
+			</div>
+		</div>
+		<div class="barber-display">
+			<img src="pics/h1.jpg">
+			<div class="descr">
+				<div class="heading">
+					<h4>James Smith <small>Goleta, CA</small></h4>
+					<span style="color:grey;">10 years cutting hair</span>
+				</div>
+				<p>I've been cutting hair since I was born. I love touching people's silky smooth hair. Please choose me as your barber. You will not regret!!</p>
+			</div>
+			<div class="rate"> 
+				<h2>$13/cut</h2> 
+				<div class="star-ratings-css">
+			  		<div class="star-ratings-css-top" style="width: 94%">
+			  			<span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+			  		</div>
+			  		<div class="star-ratings-css-bottom">
+			  			<span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+			  		</div>
+				</div>
+				<button class="btn btn-success">Schedule Now</button>
+				<button class="btn btn-info">Profile</button>
+			</div>
+		</div>
+		<div class="barber-display">
+			<img src="pics/h1.jpg">
+			<div class="descr">
+				<div class="heading">
+					<h4>James Smith <small>Goleta, CA</small></h4>
+					<span style="color:grey;">10 years cutting hair</span>
+				</div>
+				<p>I've been cutting hair since I was born. I love touching people's silky smooth hair. Please choose me as your barber. You will not regret!!</p>
+			</div>
+			<div class="rate"> 
+				<h2>$13/cut</h2> 
+				<div class="star-ratings-css">
+			  		<div class="star-ratings-css-top" style="width: 94%">
+			  			<span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+			  		</div>
+			  		<div class="star-ratings-css-bottom">
+			  			<span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+			  		</div>
+				</div>
+				<button class="btn btn-success">Schedule Now</button>
+				<button class="btn btn-info">Profile</button>
+			</div>
+		</div>
+		<div class="barber-display">
+			<img src="pics/h1.jpg">
+			<div class="descr">
+				<div class="heading">
+					<h4>James Smith <small>Goleta, CA</small></h4>
+					<span style="color:grey;">10 years cutting hair</span>
+				</div>
+				<p>I've been cutting hair since I was born. I love touching people's silky smooth hair. Please choose me as your barber. You will not regret!!</p>
+			</div>
+			<div class="rate"> 
+				<h2>$13/cut</h2> 
+				<div class="star-ratings-css">
+			  		<div class="star-ratings-css-top" style="width: 94%">
+			  			<span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+			  		</div>
+			  		<div class="star-ratings-css-bottom">
+			  			<span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+			  		</div>
+				</div>
+				<button class="btn btn-success">Schedule Now</button>
+				<button class="btn btn-info">Profile</button>
+			</div>
+		</div>
+
+	</div>
+	<div flex id="toggle-options">
+		<form>
+			<fieldset>
+				<div id="search">
+					<span class="glyphicon glyphicon-search"></span>
+					<input type="text" placeholder="Search" name="srch-term">
+                </div>
+                <div class="options">
+
+                	<div class="option-checkbox">
+	                	<h4>Price</h4>
+	                	<md-checkbox ng-model="under11" aria-label="Under $11">Under $11</md-checkbox>
+	                	<md-checkbox ng-model="between1122" aria-label="$11-$20">$11-$20</md-checkbox>
+						<md-checkbox ng-model="above21" aria-label="$21 and above">$21 and above</md-checkbox>
+					</div>
+					<div class="option-selector" style="">
+						<h4>Sorting</h4>
+						<md-select ng-model="hairstyle" placeholder="Hairstyle" class="md-no-underline" md-no-asterisk="true">
+				        	<md-option value="default" selected>Popular</md-option>
+				        	<md-option value="taper">Rating</md-option>
+				        	<md-option value="fade">Number of Cuts</md-option>
+				        	<md-option value="buzzcut">Alphabetical</md-option>
+	        			</md-select>
+        			</div>
+        			<div class="option-selector">
+						<h4>Hairstyle</h4>
+						<md-select ng-model="hairstyle" placeholder="Hairstyle" class="md-no-underline" md-no-asterisk="true">
+				        	<md-option value="default" selected>All Cuts</md-option>
+				        	<md-option value="taper">Taper</md-option>
+				        	<md-option value="fade">Fade</md-option>
+				        	<md-option value="buzzcut">Buzzcut</md-option>
+				        	<md-option value="bowlcut">Bowlcut</md-option>
+	        			</md-select>
+        			<div layout="row" div class="md-inline-form">
+        				<h4>Choose a day</h4>
+						<md-datepicker ng-model="ts"></md-datepicker>
+					</div>
+                </div>
+			</fieldset>
+		</form>
+	</div>
+
 <footer>
 	<div id="policy">
 		<div class="block"><a href="#">About</a><a href="#">Policy</a><a href="#">FAQ</a></div>
 		<div class="block"><p>&#169; CopCut, LLC All rights reserved.</p></div>
 	</div>
 	<div id="social">
-		<a href="#"><img src="pics/facebook.png">
-		<a href="#"><img src="pics/instagram.png">
-		<a href="#"><img src="pics/youtube.png">
-		<a href="#"><img src="pics/twitter.png">
+		<a href="#"><img src="pics/facebook.png"></a>
+		<a href="#"><img src="pics/instagram.png"></a>
+		<a href="#"><img src="pics/youtube.png"></a>
+		<a href="#"><img src="pics/twitter.png"></a>
 		</div>
 </footer>
 </body>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js" 
+ integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+ <!-- Angular Material requires Angular.js Libraries -->
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+
+  <!-- Angular Material Library -->
+  <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+
+ <script type="text/javascript">    
+    /**
+     * You must include the dependency on 'ngMaterial' 
+     */
+     angular.module('BlankApp',['ngMaterial']);
+ </script>
+  
 </html>
