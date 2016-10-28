@@ -50,3 +50,5 @@ class Price extends React.Component {
         );
     }
 }
+
+export default Price;

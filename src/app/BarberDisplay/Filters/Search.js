@@ -1,5 +1,4 @@
 import React from 'react'
-import FiltersTable from './FiltersTable'
 
 class Search extends React.Component{
     constructor(props){
