@@ -3,12 +3,16 @@
  */
 
 class Barbers extends React.Component{
- 
+
+
+    render(){
+        return(
+          <FiltersTable />
+          <BarberDisplay 
+        );
+    }
+
 }
 
-class BarberTable extends React.Component{
-
-}
-
-export { Barbers, BarberTable };
+export default Barbers;
 //list all the barbers in a table

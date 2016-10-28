@@ -10,9 +10,9 @@ class Search extends React.Component{
     }
     render(){
         return(
-            <div>
+            <form>
                 <input type="text" placeholder="Search..." ref="searchInput" value={this.props.filterBarber} onChange={this.doSearch}/>
-            </div>
+            </form>
         );
     }
 }
