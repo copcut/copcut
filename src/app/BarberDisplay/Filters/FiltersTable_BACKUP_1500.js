@@ -47,8 +47,11 @@ class FiltersTable extends React.Component {
             <div>
                 <h1>Test</h1>
                 <Search onSearchInput={this.handleSearch} filterBarber={this.state.filterBarber} />
+<<<<<<< HEAD
                 <Price onHandlePrice = {this.handlePrice} filterPrices = {this.state.prices}/>
-
+=======
+                <Price onHandlePrice = {this.handlePrice} />
+>>>>>>> 11db13125261d9ce8793bc310d27797eab4de674
                 <Sorting onHandleSorting = {this.handleSorting}/>
                 <Hairstyle onHandleHairstyle = {this.handleSorting}/>
             </div>

@@ -1,13 +1,13 @@
 /**
  * Created by Victor on 10/23/2016.
  */
+
 import React from 'react'
+import BarberTable from './Filters./BarberTable'
 import Price from './Price'
 import Search from './Search'
-import Hairstyle from './Hairstyle'
-import Sorting from './Sorting'
 
-class FiltersTable extends React.Component {
+class FiltersTable extends React.Component{
     constructor(props){
         super(props);
         this.state = {
@@ -45,16 +45,24 @@ class FiltersTable extends React.Component {
     render(){
         return(
             <div>
-                <h1>Test</h1>
                 <Search onSearchInput={this.handleSearch} filterBarber={this.state.filterBarber} />
                 <Price onHandlePrice = {this.handlePrice} filterPrices = {this.state.prices}/>
-
                 <Sorting onHandleSorting = {this.handleSorting}/>
                 <Hairstyle onHandleHairstyle = {this.handleSorting}/>
+                /* <BarberTable /> */
+
             </div>
         )
     }
 }
-
 export default FiltersTable;
+
+
+class Sorting extends React.Component{
+
+}
+
+class Hairstyle extends React.Component{
+
+}
 

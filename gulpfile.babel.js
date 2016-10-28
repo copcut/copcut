@@ -1,6 +1,11 @@
-import gulp from 'gulp';
-import babel from 'gulp-babel';
-import nodemon from 'gulp-nodemon';
+import gulp from 'gulp'
+import babel from 'gulp-babel'
+import nodemon from 'gulp-nodemon'
+import source from 'vinyl-source-stream'
+import buffer from 'vinyl-buffer'
+import browserify from 'browserify'
+import babelify from 'babelify'
+import sourcemaps from 'gulp-sourcemaps'
 
 const data = {
     src: 'src',
@@ -32,7 +37,23 @@ gulp.task('html', () => {
     return stream;
 });
 
-gulp.task('compile', ['js', 'html', 'css', 'images']);
+gulp.task('browserify', () => {
+    const stream = browserify({
+        entries: 'src/app/app.js',
+        debug: true,
+    })
+    .transform(babelify, {presets: ["es2015", "react"]})
+    .bundle()
+    .pipe(source('app.js'))
+    .pipe(buffer())
+    .pipe(sourcemaps.init({loadMaps: true}))
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest(data.build+'/app'));
+
+    return stream;
+});
+
+gulp.task('compile', ['js', 'browserify', 'html', 'css', 'images']);
 
 gulp.task('server', ['compile'], () => {
     const stream = nodemon({
