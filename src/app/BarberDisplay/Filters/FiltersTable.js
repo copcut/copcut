@@ -12,11 +12,9 @@ class FiltersTable extends React.Component{
         super(props);
         this.state = {
             filterBarber: '',
-            price1 : false,
-            price2 : false,
-            price3 : false,
+            prices : [false, false, false],
             sorting: 0,
-            hairstyle: 0,
+            hairstyle: 0
         };
         this.handleSearch = this.handleSearch.bind(this);
         this.handlePrice = this.handlePrice.bind(this);
@@ -25,24 +23,22 @@ class FiltersTable extends React.Component{
     }
     handleSearch(filterBarber){
         this.setState({
-            filterBarber: filterBarber,
+            filterBarber: filterBarber
         });
     }
-    handlePrice(priceCategory){
-        this.setState({
-            price1: price1,
-            price2: price2,
-            price3: price3,
-        });
+    handlePrice(prices){
+       this.setState({
+          prices : prices
+       });
     }
     handleSorting(sorting){
         this.setState({
-            sorting: sorting,
+            sorting: sorting
         });
     }
     handleHairstyle(hairstyle){
         this.setState({
-            hairstyle: hairstyle,
+            hairstyle: hairstyle
         });
     }
 
@@ -50,8 +46,7 @@ class FiltersTable extends React.Component{
         return(
             <div>
                 <Search onSearchInput={this.handleSearch} filterBarber={this.state.filterBarber} />
-                /*
-                <Price onHandlePrice = {this.handlePrice} />
+                <Price onHandlePrice = {this.handlePrice} filterPrices = {this.state.prices}/>
                 <Sorting onHandleSorting = {this.handleSorting}/>
                 <Hairstyle onHandleHairstyle = {this.handleSorting}/>
                 /* <BarberTable /> */
