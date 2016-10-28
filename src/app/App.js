@@ -10,4 +10,4 @@ var users = [
     {}
 ];
 
-ReactDOM.render(<Parent barbers = {BARBERS}/>, document.getElementById('app'));
+React.render(<FiltersTable/>, document.getElementById('app'));

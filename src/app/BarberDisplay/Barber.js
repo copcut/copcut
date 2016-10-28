@@ -3,14 +3,7 @@
  */
 
 class Barbers extends React.Component{
-    constructor(props){
-       
-    }
-
-
-    render(){
-       
-    }
+ 
 }
 
 class BarberTable extends React.Component{
