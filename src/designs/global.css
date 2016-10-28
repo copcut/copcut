@@ -73,18 +73,19 @@ footer a{
 	display: inline-block;
 	vertical-align: top;
 }
-#results{
+#content{
+	min-height: 100%;
 	margin-top: 50px; /*adjusts content below to not hide behind fixed position header*/
 }
-#results,#toggle-options{
+#content,#toggle-options{
 	color: black;
 }
-#results img{
+#content img{
 	width: 50%;
 	border-radius: 50%;
 	margin-right: 2%;
 }
-#results div,#toggle-options div,#results,#toggle-options{
+#content div,#toggle-options div,#content,#toggle-options{
 	vertical-align: top;
 	display: inline-block;
 }
@@ -96,7 +97,7 @@ footer a{
 	right: 0;
 	top: 50px;
 }
-#results{
+#content{
 	width: 80%;
 	padding: 2% 0 2% 1%;
 	display: inline-block;
@@ -116,7 +117,7 @@ footer a{
 .heading{
 	margin-bottom: 10px;
 }
-#results .star-ratings-css {
+#content .star-ratings-css {
   unicode-bidi: bidi-override;
   color: #c5c5c5;
   font-size: 25px;
@@ -154,7 +155,7 @@ footer a{
 .btn{
 	font-size: 1vw;
 }
-.results-heading{
+.content-heading{
 	display: block;
 	text-align: center;
 }
