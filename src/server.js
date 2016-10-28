@@ -15,7 +15,13 @@ Database.connect();
 
 const app = express();
 
-app.engine('handlebars', expressHandlebars({defaultLayout: 'main'}));
+const handlebarsConfig = {
+	defaultLayout: 'main', 
+	extname: '.handlebars',
+	layoutsDir: __dirname+'/views/layouts/'
+};
+app.set('views', __dirname+'/views/');
+app.engine('handlebars', expressHandlebars(handlebarsConfig));
 app.set('view engine', 'handlebars');
 
 app.use(cookieParser());

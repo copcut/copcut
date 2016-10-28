@@ -19,7 +19,7 @@ const upload = multer({ storage: storage });
 const router = express.Router();
 
 router.get('/login', (req, res) => {
-    
+    res.render('login');
 });
 
 router.post('/login', (req, res) => {
@@ -28,11 +28,11 @@ router.post('/login', (req, res) => {
 
 router.get('/logout', (req, res) => {
     //req.logout();
-    res.redirect('/');
+    //res.redirect('/');
 });
 
 router.get('/register', (req, res) => {
-    res.sendFile(path.resolve(__dirname+'/../views/register.html'));
+    res.render('register');
 });
 
 router.post('/registerUser', upload.single(), (req, res) => {

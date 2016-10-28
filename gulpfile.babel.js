@@ -27,9 +27,11 @@ gulp.task('js', () => {
 });
 
 gulp.task('html', () => {
-    const stream = gulp.src('src/**/*.html')
+    const html = gulp.src('src/**/*.html')
     .pipe(gulp.dest(data.build));
-    return stream;
+
+    const handlebars = gulp.src('src/**/*.handlebars')
+    .pipe(gulp.dest(data.build));
 });
 
 gulp.task('compile', ['js', 'html', 'css', 'images']);
