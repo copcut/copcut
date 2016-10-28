@@ -10,24 +10,26 @@ import flash from 'connect-flash'
 import authenticationRoutes from './routes/authentication'
 import Database from './models/database'
 import Barber from './models/barber'
+import validator from 'express-validator'
 
 Database.connect();
 
 const app = express();
 
-const handlebarsConfig = {
+const handlebars = expressHandlebars.create({
 	defaultLayout: 'main', 
 	extname: '.handlebars',
 	layoutsDir: __dirname+'/views/layouts/'
-};
+});
 app.set('views', __dirname+'/views/');
-app.engine('handlebars', expressHandlebars(handlebarsConfig));
+app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+app.use(validator());
 
 app.use(flash());
 app.use(session({

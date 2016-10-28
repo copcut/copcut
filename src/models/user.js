@@ -1,7 +1,7 @@
 import Database from './database'
 import Promise from 'bluebird'
 import bcrypt from 'bcryptjs'
-import { UsernameExistsError, EmailExistsError, UserNotFoundError } from '../config/errors'
+import { UsernameExistsError, EmailExistsError, UsernameEmailExistsError, UserNotFoundError } from '../config/errors'
 
 //Add promise support to bcrypt
 Promise.promisifyAll(bcrypt);
@@ -36,16 +36,28 @@ const User = () => {
 		}
 	};
 
-	const checkUsernameExists = username => {
+	const checkUsernameOrEmailExists = (username, email) => {
 		return Promise.using(Database.getConnection(), connection => {
-			return connection.queryAsync('SELECT * FROM users WHERE username=?', username);
-		}).then(data => checkIfExists(data, UsernameExistsError, false));
-	};
-
-	const checkEmailExists = email => {
-		return Promise.using(Database.getConnection(), connection => {
-			return connection.queryAsync('SELECT * FROM users WHERE email=?', email);
-		}).then(data => checkIfExists(data, EmailExistsError, false));
+			return connection.queryAsync('SELECT username, email FROM users WHERE (username=? OR email=?)', [username, email]);
+		}).then(data => {
+			if(data.length == 0) {
+				//empty set we gucci
+				return Promise.resolve(username);
+			}
+			else {
+				if(data[0].username == username && data[0].email == email) {
+					throw new UsernameEmailExistsError();
+				}
+				else {
+					if(data[0].username == username) {
+						throw new UsernameExistsError();
+					}
+					else if (data[0].email == email) {
+						throw new EmailExistsError();
+					}
+				}
+			}
+		});
 	};
 
 	return {
@@ -65,13 +77,12 @@ const User = () => {
 				lastname: data.lastname,
 				password: data.password,
 				email: data.email,
-				birthday: data.birthday,
+				birthday: new Date(data.birthday),
 				gender: data.gender
 			};
 
-			return checkUsernameExists(userData.username)
-				   .then(checkEmailExists(userData.email))
-				   .then(encryptPassword(userData))
+			return checkUsernameOrEmailExists(data.username, data.email)
+				   .then(() => encryptPassword(userData))
 				   .then(value => {
 						return Promise.using(Database.getConnection(), connection => {
 							return connection.queryAsync('INSERT INTO users SET ?', value);

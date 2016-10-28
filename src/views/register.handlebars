@@ -1,26 +1,30 @@
+{{#if errors }}
+  <ul>
+    {{#each errors }}
+      <li>{{ this.msg }}</li>
+    {{/each }}
+  </ul>
+{{/if }}
+
 <h2>User</h2>
 <form action="/registerUser" method="post" enctype="multipart/form-data">
 	Username:
-	<input type='text' name='username' maxlength='36'><br>
+	<input type='text' name='username' maxlength='36' value='{{ info.username }}'><br>
 	Password:
-	<input type='password' name='password'><br>
+	<input type='password' name='password' value='{{ info.password }}'><br>
 	Email:
-	<input type='email' name='email' maxlength="320"><br>
+	<input type='email' name='email' maxlength="320" value='{{ info.email }}'><br>
 	Birthday:
-	<input type='date' name='birthday'><br>
+	<input type='date' name='birthday' value='{{ info.birthday }}'><br>
 
 	First Name:
-	<input type='text' name='firstname' maxlength="50"><br>
+	<input type='text' name='firstname' maxlength="50" value='{{ info.firstname }}'><br>
 	Middle Name:
-	<input type='text' name='middlename' maxlength="50"><br>
+	<input type='text' name='middlename' maxlength="50" value='{{ info.middlename }}'><br>
 	Last Name:
-	<input type='text' name='lastname' maxlength="50"><br>
+	<input type='text' name='lastname' maxlength="50" value='{{ info.lastname }}'><br>
 	Gender:
-	<select>
-		<option value="M">Male</option>
-		<option value="F">Female</option>
-		<option value="O">Other</option>
-	</select><br>
+	<input type='text' name='gender' maxlength="1" value='{{ info.gender }}'><br>
 	<input type="submit"> <input type="reset">
 </form>
 
@@ -42,11 +46,7 @@
 	Last Name:
 	<input type='text' name='lastname' maxlength="50"><br>
 	Gender:
-	<select name='gender'>
-		<option value="M">Male</option>
-		<option value="F">Female</option>
-		<option value="O">Other</option>
-	</select><br>
+	<input type='text' name='gender' maxlength="1"><br>
 
 	Address:
 	<input type='text' name='address'><br>
