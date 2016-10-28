@@ -62,5 +62,5 @@ passport.use(new LocalStrategy((username, password, done) => {
 	}).asCallback(done, { spread: true });
 }));
 
-app.use(express.static(__dirname+'/designs'));
+app.use(express.static(__dirname+'/app'));
 app.listen(3000);
