@@ -8,6 +8,7 @@ import React from 'react'
 //import Sorting from './Sorting'
 
 class FiltersTable extends React.Component {
+    /*
     constructor(props){
         super(props);
         this.state = {
@@ -42,12 +43,15 @@ class FiltersTable extends React.Component {
             hairstyle: hairstyle
         });
     }
+    */
 
     render(){
         return(
             <div>
                 <h1>Test</h1>
+                /*
                 <Search onSearchInput={this.handleSearch} filterBarber={this.state.filterBarber} />
+                 */
                 /*
                 <Price onHandlePrice = {this.handlePrice} filterPrices = {this.state.prices}/>
 
@@ -55,13 +59,13 @@ class FiltersTable extends React.Component {
                 <Hairstyle onHandleHairstyle = {this.handleSorting}/>
                 */
             </div>
-        )
+        );
     }
 }
 export default FiltersTable;
 
 
-
+/*
 class Search extends React.Component{
     constructor(props){
         super(props);
@@ -167,5 +171,5 @@ render(){
 }
 }
 
-
+*/
 

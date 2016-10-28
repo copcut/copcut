@@ -8,7 +8,7 @@ class Barbers extends React.Component{
     render(){
         return(
           <FiltersTable />
-          <BarberDisplay 
+          //<BarberDisplay
         );
     }
 
