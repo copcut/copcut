@@ -1,5 +1,6 @@
 import Promise from 'bluebird'
 import express from 'express'
+import expressHandlebars from 'express-handlebars'
 import cookieParser from 'cookie-parser' 
 import bodyParser from 'body-parser'
 import passport from 'passport'
@@ -7,10 +8,15 @@ import passportLocal from 'passport-local'
 import session from 'express-session' 
 import flash from 'connect-flash'
 import authenticationRoutes from './routes/authentication'
+import Database from './models/database'
+import Barber from './models/barber'
 
 Database.connect();
 
 const app = express();
+
+app.engine('handlebars', expressHandlebars({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
 
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({
@@ -58,11 +64,10 @@ passport.use(new LocalStrategy((username, password, done) => {
 	}).asCallback(done, { spread: true });
 }));
 
-
 app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/', authenticationRoutes);
 
-//app.use(express.static(__dirname+'/designs'));
-//app.listen(3000);
+app.use(express.static(__dirname+'/designs'));
+app.listen(3000);

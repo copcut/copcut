@@ -35,7 +35,7 @@ const Barber = () => {
 
 			const setBarberId = id => {
 				barberData.id = id;
-				return barberData;
+				return Promise.resolve(barberData);
 			};
 
 			const insertIntoBarbers = values => {
