@@ -27,21 +27,21 @@ class Price extends React.Component {
             <form>
                 <div className="checkbox1">
                     <label>
-                        <input type="checkbox" handleCheckboxChange={this.toggleCheckbox()} name="Price1"
+                        <input type="checkbox" onChange={this.toggleCheckbox} name="Price1"
                                value="option1"/>
                         Price Under $10
                     </label>
                 </div>
                 <div className="checkbox2">
                     <label>
-                        <input type="checkbox" handleCheckboxChange={this.toggleCheckbox()} name="Price2"
+                        <input type="checkbox" onChange={this.toggleCheckbox} name="Price2"
                                value="option2"/>
                         Between $10-$20
                     </label>
                 </div>
                 <div className="checkbox3">
                     <label>
-                        <input type="checkbox" handleCheckboxChange={this.toggleCheckbox()} name="Price3"
+                        <input type="checkbox" onChange={this.toggleCheckbox} name="Price3"
                                value="option3"/>
                         $20+
                     </label>

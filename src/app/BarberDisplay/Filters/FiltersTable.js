@@ -20,7 +20,7 @@ class FiltersTable extends React.Component {
         };
         this.handleSearch = this.handleSearch.bind(this);
         this.handlePrice = this.handlePrice.bind(this);
-        this.handleSorting = this.handle.Sorting.bind(this);
+        this.handleSorting = this.handleSorting.bind(this);
         this.handleHairstyle = this.handleHairstyle.bind(this);
     }
     handleSearch(filterBarber){
@@ -55,7 +55,7 @@ class FiltersTable extends React.Component {
                 <Sorting onHandleSorting = {this.handleSorting}/>
                 <Hairstyle onHandleHairstyle = {this.handleSorting}/>
             </div>
-        )
+        );
     }
 }
 
