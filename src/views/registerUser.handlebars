@@ -1,0 +1,30 @@
+<h2>Register as User</h2>
+
+{{#if errors }}
+  <ul>
+    {{#each errors }}
+      <li>{{ this.msg }}</li>
+    {{/each }}
+  </ul>
+{{/if }}
+
+<form action="/registerUser" method="post" enctype="multipart/form-data">
+	Username:
+	<input type='text' name='username' maxlength='36' value='{{ info.username }}'><br>
+	Password:
+	<input type='password' name='password' value='{{ info.password }}'><br>
+	Email:
+	<input type='email' name='email' maxlength="320" value='{{ info.email }}'><br>
+	Birthday:
+	<input type='date' name='birthday' value='{{ info.birthday }}'><br>
+
+	First Name:
+	<input type='text' name='firstname' maxlength="50" value='{{ info.firstname }}'><br>
+	Middle Name:
+	<input type='text' name='middlename' maxlength="50" value='{{ info.middlename }}'><br>
+	Last Name:
+	<input type='text' name='lastname' maxlength="50" value='{{ info.lastname }}'><br>
+	Gender:
+	<input type='text' name='gender' maxlength="1" value='{{ info.gender }}'><br>
+	<input type="submit"> <input type="reset">
+</form>

@@ -4,16 +4,15 @@ import multer from 'multer'
 import Barber from '../models/barber'
 import User from '../models/user'
 import passport from 'passport'
-
 import { UsernameExistsError, EmailExistsError, UsernameEmailExistsError } from '../config/errors'
 
 const storage = multer.diskStorage({
 	destination(req, file, cb) {
-		cb(null, __dirname+'/../uploads');
+		cb(null, path.join(__dirname, '../../uploads'));
 	},
 
 	filename(req, file, cb) {
-		cb(null, req.body.username + '-profilepicture.png');
+		cb(null, req.body.username+'-'+Date.now()+ '-profilepicture.png');
 	}
 });
 
@@ -32,11 +31,11 @@ router.post('/login', passport.authenticate('local', {
 
 router.get('/logout', (req, res) => {
     req.logout();
-    res.redirect('/login');
+    res.redirect('/');
 });
 
-router.get('/register', (req, res) => {
-    res.render('register', {errors: req.flash('errors'), info: req.flash('info')[0]});
+router.get('/registerUser', (req, res) => {
+    res.render('registerUser', {errors: req.flash('errors'), info: req.flash('info')[0]});
 });
 
 router.post('/registerUser', upload.single(), (req, res) => {
@@ -64,7 +63,7 @@ router.post('/registerUser', upload.single(), (req, res) => {
 	if(errors) {
 		req.flash('errors', errors);
 		req.flash('info', data);
-		res.redirect('/register');
+		res.redirect('/registerUser');
 	}
 	else {
 		User.addUser(data)
@@ -72,24 +71,28 @@ router.post('/registerUser', upload.single(), (req, res) => {
 		.catch(UsernameExistsError, error => {
 			req.flash('errors', [{msg: 'The username you selected already exists.'}]);
 			req.flash('info', data);
-			res.redirect('/register');
+			res.redirect('/registerUser');
 		})
 		.catch(EmailExistsError, error => {
 			req.flash('errors', [{msg: 'The email you selected already exists.'}]);
 			req.flash('info', data);
-			res.redirect('/register');
+			res.redirect('/registerUser');
 		})
 		.catch(UsernameEmailExistsError, error => {
 			req.flash('errors', [{msg: 'The username you selected already exists.'}, {msg: 'The email you selected already exists.'}]);
 			req.flash('info', data);
-			res.redirect('/register');
+			res.redirect('/registerUser');
 		})
 		.catch(error => {
 			req.flash('errors', [{msg: 'Your request could not be processed.'}]);
 			req.flash('info', data);
-			res.redirect('/register');
+			res.redirect('/registerUser');
 		});
 	}
+});
+
+router.get('/registerBarber', (req, res) => {
+    res.render('registerBarber', {errors: req.flash('errors'), info: req.flash('info')[0]});
 });
 
 router.post('/registerBarber', upload.single('profilepicture'), (req, res) => {
@@ -107,7 +110,7 @@ router.post('/registerBarber', upload.single('profilepicture'), (req, res) => {
 		country: req.body.country,
 		postcode: req.body.postcode,
 		phonenumber: req.body.phonenumber,
-		profilepicture: req.file.destination,
+		profilepicture: req.file.filename,
 		yearscut: req.body.yearscut,
 		description: req.body.description
 	};
@@ -132,7 +135,7 @@ router.post('/registerBarber', upload.single('profilepicture'), (req, res) => {
 	if(errors) {
 		req.flash('errors', errors);
 		req.flash('info', data);
-		res.redirect('/register');
+		res.redirect('/registerBarber');
 	}
 	else {
 		Barber.addBarber(data)
@@ -140,22 +143,22 @@ router.post('/registerBarber', upload.single('profilepicture'), (req, res) => {
 		.catch(UsernameExistsError, error => {
 			req.flash('errors', [{msg: 'The username you selected already exists.'}]);
 			req.flash('info', data);
-			res.redirect('/register');
+			res.redirect('/registerBarber');
 		})
 		.catch(EmailExistsError, error => {
 			req.flash('errors', [{msg: 'The email you selected already exists.'}]);
 			req.flash('info', data);
-			res.redirect('/register');
+			res.redirect('/registerBarber');
 		})
 		.catch(UsernameEmailExistsError, error => {
 			req.flash('errors', [{msg: 'The username you selected already exists.'}, {msg: 'The email you selected already exists.'}]);
 			req.flash('info', data);
-			res.redirect('/register');
+			res.redirect('/registerBarber');
 		})
 		.catch(error => {
 			req.flash('errors', [{msg: 'Your request could not be processed.'}]);
 			req.flash('info', data);
-			res.redirect('/register');
+			res.redirect('/registerBarber');
 		});
 	}
 });

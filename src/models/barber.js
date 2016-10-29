@@ -28,6 +28,7 @@ const Barber = () => {
 				city: data.city,
 				country: data.country,
 				postcode: data.postcode,
+				profilepicture: data.profilepicture,
 				phonenumber: data.phonenumber,
 				yearscut: data.yearscut,
 				description: data.description

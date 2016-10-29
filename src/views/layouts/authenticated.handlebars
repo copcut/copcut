@@ -18,14 +18,9 @@
 			<div class="navbar-header">
 				<a class="navbar-brand" href="/" style="color: white;" id="logo">CopCut</a>
 			</div>
-			<ul class= "nav navbar-nav">
-				<li><a href="#">How It Works</a></li>
-				<li><a href="#">About</a></li>
-			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="/registerBarber">Become a Barber</a></li>
-			    <li><a href="/registerUser"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-			    <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+			    <li><a>{{ user.username }}</a></li>
+			    <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 	    	</ul>
 		</div>
 	</nav>

@@ -56,7 +56,7 @@ passport.use('local', new LocalStrategy({passReqToCallback : true}, (req, userna
 	/*
 	**  Passport has no support for promises so to mimic the functionality of the done callback:
 	**  1) Return Promise.resolve passing in an array of done's arguments
-	**	2) Call Promise.asCallback with spread set to true on the promise
+	**	2) Call Promise.asCallback with spread set to true
 	*/
 	User.getUser(username).then((user) => {
 		if(!user) {
@@ -66,20 +66,28 @@ passport.use('local', new LocalStrategy({passReqToCallback : true}, (req, userna
 
 		return User.checkPassword(username, password).then(validPassword => {
 			if(validPassword) {
-				return Promise.resolve([user, req.flash('loginMessage', 'Welcome.')]);
+				return Promise.resolve([user]);
 			}
 			else {
 				req.flash('loginUsername', username);
 				return Promise.resolve([false, req.flash('loginMessage', 'Incorrect password.')]);
 			}
 		});
-	}).asCallback(done, { spread: true });
+	}).asCallback(done, {spread: true});
 }));
 app.use(passport.initialize());
 app.use(passport.session());
 
 app.get('/', (req, res) => {
-	res.render('home');
+	if(req.isAuthenticated()) {
+		res.render('dashboard', {
+			user: req.user,
+			layout: 'authenticated'
+		});
+	}
+	else {
+		res.render('home');
+	}
 });
 app.use('/', authenticationRoutes);
 app.listen(3000);
