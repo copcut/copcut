@@ -8,56 +8,52 @@ import React from 'react'
 //import Sorting from './Sorting'
 
 class FiltersTable extends React.Component {
-    /*
-    constructor(props){
-        super(props);
-        this.state = {
-            filterBarber: '',
-            prices : [false, false, false],
-            sorting: 0,
-            hairstyle: 0
-        };
-        this.handleSearch = this.handleSearch.bind(this);
-        this.handlePrice = this.handlePrice.bind(this);
-        this.handleSorting = this.handleSorting.bind(this);
-        this.handleHairstyle = this.handleHairstyle.bind(this);
-    }
-    handleSearch(filterBarber){
-        this.setState({
-            filterBarber: filterBarber
-        });
-        // every time there is a change, pass props to Barber.js
-    }
-    handlePrice(prices){
-       this.setState({
-          prices : prices
-       });
-    }
-    handleSorting(sorting){
-        this.setState({
-            sorting: sorting
-        });
-    }
-    handleHairstyle(hairstyle){
-        this.setState({
-            hairstyle: hairstyle
-        });
-    }
-    */
+
+     constructor(props){
+         super(props);
+         this.state = {
+         filterBarber: '',
+         prices : [false, false, false],
+         sorting: 0,
+         hairstyle: 0
+     };
+         this.handleSearch = this.handleSearch.bind(this);
+         this.handlePrice = this.handlePrice.bind(this);
+         this.handleSorting = this.handleSorting.bind(this);
+         this.handleHairstyle = this.handleHairstyle.bind(this);
+     }
+     handleSearch(filterBarber){
+         this.setState({
+         filterBarber: filterBarber
+         });
+         // every time there is a change, pass props to Barber.js
+     }
+     handlePrice(prices){
+         this.setState({
+         prices : prices
+         });
+     }
+     handleSorting(sorting){
+         this.setState({
+         sorting: sorting
+         });
+     }
+     handleHairstyle(hairstyle) {
+         this.setState({
+             hairstyle: hairstyle
+         });
+     }
+
+
 
     render(){
         return(
             <div>
                 <h1>Victor</h1>
-                /*
                 <Search onSearchInput={this.handleSearch} filterBarber={this.state.filterBarber} />
-                 */
-                /*
                 <Price onHandlePrice = {this.handlePrice} filterPrices = {this.state.prices}/>
-
                 <Sorting onHandleSorting = {this.handleSorting}/>
                 <Hairstyle onHandleHairstyle = {this.handleSorting}/>
-                */
             </div>
         );
     }
@@ -65,7 +61,7 @@ class FiltersTable extends React.Component {
 export default FiltersTable;
 
 
-/*
+
 class Search extends React.Component{
     constructor(props){
         super(props);
@@ -76,13 +72,12 @@ class Search extends React.Component{
     }
     render(){
         return(
-            <Form>
-                <input type="text" placeholder="Search..." ref="searchInput" value={this.props.filterBarber} onChange={this.handleChange}/>
-            </Form>
+            <div>
+                <input type="text" placeholder="Search..." value={this.props.filterBarber} ref="searchInput" onChange={this.handleChange}/>
+            </div>
         );
     }
 }
-Search.propTypes = {filterBarber : React.PropTypes.string};
 Search.defaultProps = {filterBarber: ""};
 
 class Price extends React.Component {
@@ -92,7 +87,7 @@ class Price extends React.Component {
         this.state = {
             price1: false,
             price2: false,
-            price3: false,
+            price3: false
         }
     }
 
@@ -171,5 +166,5 @@ render(){
 }
 }
 
-*/
+
 
