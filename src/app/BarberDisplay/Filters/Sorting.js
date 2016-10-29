@@ -3,7 +3,7 @@ import Dropdown from 'react-dropdown'
 
 class Sorting extends React.Component{
 	const options = [
-		{}
+		'Popular', 'Rating', 'Hot Cuts'
 	]
 
 	render(){
