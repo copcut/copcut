@@ -5,7 +5,6 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import FiltersTable from './BarberDisplay/Filters/FiltersTable'
 
-// NEED to include schedule data, firstt and last name?
 const barbers = [
     {
     	firstname: "Victor", 

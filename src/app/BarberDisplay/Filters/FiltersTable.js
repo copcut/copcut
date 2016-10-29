@@ -12,52 +12,52 @@ class FiltersTable extends React.Component {
         super(props);
         this.state = {
             filterBarber: '',
-            price1 : false,
-            price2 : false,
-            price3 : false,
+            prices : [false, false, false],
             sorting: 0,
-            hairstyle: 0,
+            hairstyle: 0
         };
         this.handleSearch = this.handleSearch.bind(this);
         this.handlePrice = this.handlePrice.bind(this);
         this.handleSorting = this.handleSorting.bind(this);
         this.handleHairstyle = this.handleHairstyle.bind(this);
     }
+
     handleSearch(filterBarber){
         this.setState({
-            filterBarber: filterBarber,
+            filterBarber: filterBarber
         });
+        // every time there is a change, pass props to Barber.js
     }
-    handlePrice(priceCategory){
-        this.setState({
-            price1: price1,
-            price2: price2,
-            price3: price3,
-        });
+
+    handlePrice(prices){
+       this.setState({
+          prices : prices
+       });
     }
+
     handleSorting(sorting){
         this.setState({
-            sorting: sorting,
-        });
-    }
-    handleHairstyle(hairstyle){
-        this.setState({
-            hairstyle: hairstyle,
+            sorting: sorting
         });
     }
 
-    render(){
-        return(
+    handleHairstyle(hairstyle){
+        this.setState({
+            hairstyle: hairstyle
+        });
+    }
+
+    render() {
+        return (
             <div>
-                <h1>Test</h1>
+                <h1>Victor</h1>
                 <Search onSearchInput={this.handleSearch} filterBarber={this.state.filterBarber} />
-                <Price onHandlePrice = {this.handlePrice} />
+                <Price onHandlePrice = {this.handlePrice} filterPrices = {this.state.prices}/>
                 <Sorting onHandleSorting = {this.handleSorting}/>
-                <Hairstyle onHandleHairstyle = {this.handleSorting}/>
+                <Hairstyle onHandleHairstyle = {this.handleHairstyle}/>
             </div>
         );
     }
 }
-
 export default FiltersTable;
 
