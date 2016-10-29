@@ -6,7 +6,7 @@ class Search extends React.Component{
         this.doSearch = this.doSearch.bind(this);
     }
     doSearch(){
-        this.props.onSearchInput(this.refs.searchInput.value(),);
+        this.props.onSearchInput(this.refs.searchInput.value);
     }
     render(){
         return(

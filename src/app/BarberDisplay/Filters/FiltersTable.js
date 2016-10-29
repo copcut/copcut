@@ -12,7 +12,9 @@ class FiltersTable extends React.Component {
         super(props);
         this.state = {
             filterBarber: '',
-            prices : [false, false, false],
+            prices1: false,
+            price2: false,
+            price3: false,
             sorting: 0,
             hairstyle: 0
         };
@@ -26,12 +28,15 @@ class FiltersTable extends React.Component {
         this.setState({
             filterBarber: filterBarber
         });
+        this.props.onSearch(this.state.filterBarber);
         // every time there is a change, pass props to Barber.js
     }
 
-    handlePrice(prices){
+    handlePrice(prices1, price2, price3){
        this.setState({
-          prices : prices
+           prices1 : prices1,
+           prices2: prices2,
+           prices3: prices3
        });
     }
 
@@ -46,12 +51,17 @@ class FiltersTable extends React.Component {
             hairstyle: hairstyle
         });
     }
+    renderWord(){
+        return this.state.filterBarber;
+    }
 
     render() {
+
         return (
             <div>
                 <h1>Victor</h1>
                 <Search onSearchInput={this.handleSearch} filterBarber={this.state.filterBarber} />
+                <p> {this.props.filterWord} </p>
                 <Price onHandlePrice = {this.handlePrice} filterPrices = {this.state.prices}/>
                 <Sorting onHandleSorting = {this.handleSorting}/>
                 <Hairstyle onHandleHairstyle = {this.handleHairstyle}/>
