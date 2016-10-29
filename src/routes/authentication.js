@@ -3,6 +3,8 @@ import path from 'path'
 import multer from 'multer'
 import Barber from '../models/barber'
 import User from '../models/user'
+import passport from 'passport'
+
 import { UsernameExistsError, EmailExistsError, UsernameEmailExistsError } from '../config/errors'
 
 const storage = multer.diskStorage({
@@ -19,16 +21,18 @@ const upload = multer({ storage: storage });
 const router = express.Router();
 
 router.get('/login', (req, res) => {
-    res.render('login');
+    res.render('login', {error: req.flash('loginMessage'), username: req.flash('loginUsername')});
 });
 
-router.post('/login', (req, res) => {
-    
-});
+router.post('/login', passport.authenticate('local', {
+	successRedirect : '/',
+	failureRedirect : '/login', 
+	failureFlash : true
+}));
 
 router.get('/logout', (req, res) => {
-    //req.logout();
-    //res.redirect('/');
+    req.logout();
+    res.redirect('/login');
 });
 
 router.get('/register', (req, res) => {

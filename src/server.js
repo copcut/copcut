@@ -9,7 +9,7 @@ import session from 'express-session'
 import flash from 'connect-flash'
 import authenticationRoutes from './routes/authentication'
 import Database from './models/database'
-import Barber from './models/barber'
+import User from './models/user'
 import validator from 'express-validator'
 
 Database.connect();
@@ -24,6 +24,8 @@ const handlebars = expressHandlebars.create({
 app.set('views', __dirname+'/views/');
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
+
+app.use(express.static(__dirname+'/designs'));
 
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({
@@ -50,7 +52,7 @@ passport.deserializeUser(function(username, done) {
     User.getUser(username).asCallback(done);
 });
 
-passport.use(new LocalStrategy((username, password, done) => {
+passport.use('local', new LocalStrategy({passReqToCallback : true}, (req, username, password, done) => {
 	/*
 	**  Passport has no support for promises so to mimic the functionality of the done callback:
 	**  1) Return Promise.resolve passing in an array of done's arguments
@@ -58,15 +60,17 @@ passport.use(new LocalStrategy((username, password, done) => {
 	*/
 	User.getUser(username).then((user) => {
 		if(!user) {
-			return Promise.resolve([false, { message: 'Incorrect username.' }]);
+			req.flash('loginUsername', username);
+			return Promise.resolve([false, req.flash('loginMessage', 'Incorrect username.')]);
 		}
 
 		return User.checkPassword(username, password).then(validPassword => {
 			if(validPassword) {
-				return Promise.resolve([user, { message: 'Welcome' }]);
+				return Promise.resolve([user, req.flash('loginMessage', 'Welcome.')]);
 			}
 			else {
-				return Promise.resolve([false, { message: 'Incorrect password.' }]);
+				req.flash('loginUsername', username);
+				return Promise.resolve([false, req.flash('loginMessage', 'Incorrect password.')]);
 			}
 		});
 	}).asCallback(done, { spread: true });
@@ -76,6 +80,4 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/', authenticationRoutes);
-
-app.use(express.static(__dirname+'/designs'));
 app.listen(3000);

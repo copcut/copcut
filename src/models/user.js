@@ -114,7 +114,6 @@ const User = () => {
 			return Promise.using(Database.getConnection(), connection => {
 				return connection.queryAsync('SELECT * FROM users WHERE username=?', username);
 			})
-			.then(data => checkIfExists(data, UserNotFoundError, true))
 			.then(data => Promise.resolve(data[0]));
 		},
 
