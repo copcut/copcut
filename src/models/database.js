@@ -20,7 +20,7 @@ const Database = () => {
                 host: 'localhost',
                 user: 'testuser',
                 password: 'testpassword',
-                database: 'copcuttesting'
+                database: 'copcut'
             });  
         },
 
