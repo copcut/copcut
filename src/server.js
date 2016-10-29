@@ -19,6 +19,7 @@ Database.initialize().then(() => {
 	 process.exit(0);
 }); //run this only first time app is run
 */
+
 const app = express();
 
 const handlebars = expressHandlebars.create({
@@ -83,6 +84,7 @@ passport.use('local', new LocalStrategy({passReqToCallback : true}, (req, userna
 app.use(passport.initialize());
 app.use(passport.session());
 
+
 app.get('/', (req, res) => {
 	if(req.isAuthenticated()) {
 		res.render('dashboard', {
@@ -96,4 +98,5 @@ app.get('/', (req, res) => {
 });
 app.use('/', authenticationRoutes);
 app.listen(3000);
+
 
