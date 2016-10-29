@@ -13,7 +13,12 @@ import User from './models/user'
 import validator from 'express-validator'
 
 Database.connect();
-
+/*
+Database.initialize().then(() => {
+	 console.log("database initialized");
+	 process.exit(0);
+}); //run this only first time app is run
+*/
 const app = express();
 
 const handlebars = expressHandlebars.create({
@@ -91,3 +96,4 @@ app.get('/', (req, res) => {
 });
 app.use('/', authenticationRoutes);
 app.listen(3000);
+
