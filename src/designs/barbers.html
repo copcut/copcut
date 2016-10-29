@@ -39,6 +39,7 @@
 </nav>
 
 	<div id="content">
+		<div id="barber-content">
 		<span class="content-heading">Viewing 749 of 749 barbers near you.</span>
 		<div class="barber-display">
 			<img src="pics/h1.jpg">
@@ -178,50 +179,50 @@
 				<button class="btn btn-info">Profile</button>
 			</div>
 		</div>
+		</div>
 
+		<div flex id="toggle-options">
+			<form>
+				<fieldset>
+					<div id="search">
+						<span class="glyphicon glyphicon-search"></span>
+						<input type="text" placeholder="Search" name="srch-term">
+	                </div>
+	                <div class="options">
+
+	                	<div class="option-checkbox">
+		                	<h4>Price</h4>
+		                	<md-checkbox ng-model="under11" aria-label="Under $11">Under $11</md-checkbox>
+		                	<md-checkbox ng-model="between1122" aria-label="$11-$20">$11-$20</md-checkbox>
+							<md-checkbox ng-model="above21" aria-label="$21 and above">$21 and above</md-checkbox>
+						</div>
+						<div class="option-selector" style="">
+							<h4>Sorting</h4>
+							<md-select ng-model="hairstyle" placeholder="Hairstyle" class="md-no-underline" md-no-asterisk="true">
+					        	<md-option value="default" selected>Popular</md-option>
+					        	<md-option value="taper">Rating</md-option>
+					        	<md-option value="fade">Number of Cuts</md-option>
+					        	<md-option value="buzzcut">Alphabetical</md-option>
+		        			</md-select>
+	        			</div>
+	        			<div class="option-selector">
+							<h4>Hairstyle</h4>
+							<md-select ng-model="hairstyle" placeholder="Hairstyle" class="md-no-underline" md-no-asterisk="true">
+					        	<md-option value="default" selected>All Cuts</md-option>
+					        	<md-option value="taper">Taper</md-option>
+					        	<md-option value="fade">Fade</md-option>
+					        	<md-option value="buzzcut">Buzzcut</md-option>
+					        	<md-option value="bowlcut">Bowlcut</md-option>
+		        			</md-select>
+	        			<div layout="row" div class="md-inline-form">
+	        				<h4>Choose a day</h4>
+							<md-datepicker ng-model="ts"></md-datepicker>
+						</div>
+	                </div>
+				</fieldset>
+			</form>
+		</div>
 	</div>
-	<div flex id="toggle-options">
-		<form>
-			<fieldset>
-				<div id="search">
-					<span class="glyphicon glyphicon-search"></span>
-					<input type="text" placeholder="Search" name="srch-term">
-                </div>
-                <div class="options">
-
-                	<div class="option-checkbox">
-	                	<h4>Price</h4>
-	                	<md-checkbox ng-model="under11" aria-label="Under $11">Under $11</md-checkbox>
-	                	<md-checkbox ng-model="between1122" aria-label="$11-$20">$11-$20</md-checkbox>
-						<md-checkbox ng-model="above21" aria-label="$21 and above">$21 and above</md-checkbox>
-					</div>
-					<div class="option-selector" style="">
-						<h4>Sorting</h4>
-						<md-select ng-model="hairstyle" placeholder="Hairstyle" class="md-no-underline" md-no-asterisk="true">
-				        	<md-option value="default" selected>Popular</md-option>
-				        	<md-option value="taper">Rating</md-option>
-				        	<md-option value="fade">Number of Cuts</md-option>
-				        	<md-option value="buzzcut">Alphabetical</md-option>
-	        			</md-select>
-        			</div>
-        			<div class="option-selector">
-						<h4>Hairstyle</h4>
-						<md-select ng-model="hairstyle" placeholder="Hairstyle" class="md-no-underline" md-no-asterisk="true">
-				        	<md-option value="default" selected>All Cuts</md-option>
-				        	<md-option value="taper">Taper</md-option>
-				        	<md-option value="fade">Fade</md-option>
-				        	<md-option value="buzzcut">Buzzcut</md-option>
-				        	<md-option value="bowlcut">Bowlcut</md-option>
-	        			</md-select>
-        			<div layout="row" div class="md-inline-form">
-        				<h4>Choose a day</h4>
-						<md-datepicker ng-model="ts"></md-datepicker>
-					</div>
-                </div>
-			</fieldset>
-		</form>
-	</div>
-
 <footer>
 	<div id="policy">
 		<div class="block"><a href="#">About</a><a href="#">Policy</a><a href="#">FAQ</a></div>

@@ -5,8 +5,9 @@ html,body{
 	background-color: white;
 	font-family: "Montserrat";
 }
-a{
+li{
 	transition: all 0.3s ease;
+	-webkit-transition: all 0.3s ease;
 	-moz-transition: all 0.3s ease;
 	-o-transition: all 0.3s ease;
 }
@@ -24,22 +25,22 @@ a:hover,a:visited{
 	background-size: cover;
 }
 .navbar-default{
-	padding: 0 2%;
 	border:none;
 	background: transparent;
 }
-.navbar-default .navbar-brand{
-	font-size: 20px;
+#logo-vert{
+	margin: 0 25px;
+}
+#logo{
+	font-size: 20px; 
+	text-decoration: none;
 	font-family: 'Quicksand', sans-serif;
 }
 .navbar-nav img{
-	height: 20px;
-	width: 20px;
+	height: 26px;
+	width: 26px;
 }
-.navbar-default li{
-	vertical-align: middle;
-}
-.navbar-default .navbar-brand,.navbar-default .navbar-nav>li>a{
+#logo,.navbar-default .navbar-nav>li>a{
 	color: white;
 }
 #header.header{
@@ -51,9 +52,28 @@ a:hover,a:visited{
 }
 #header.header a{
 	color: black;
+	display: table-cell;
+	vertical-align: middle;
 }
-#header.header a:hover{
-	color: #9E9E9E;
+#header .container-fluid{
+	padding: 0;
+}
+#header.header li:hover{
+	background-color: #edefed;
+}
+#header.header li a{
+	padding: 0 20px;
+}
+#header.header li{
+	border: 1px solid #edefed;
+}
+.navbar-default li,#logo-vert{
+	vertical-align: middle;
+	height: 60px;
+	display: table;
+}
+#header.header .navbar-right span{
+	margin-right: 15px;
 }
 footer{
 	color: #838994;
