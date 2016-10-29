@@ -2,30 +2,66 @@
  * Created by Victor on 10/23/2016.
  */
 import React from 'react'
-import FiltersTable from './Filters/FiltersTable'
+import Price from './Filters/Price'
+import Search from './Filters/Search'
+import Hairstyle from './Filters/Hairstyle'
+import Sorting from './Filters/Sorting'
 import BarberDisplay from './BarberDisplay/BarberDisplay'
 
 class Barbers extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            filterWord : '',
-            prices : [false, false, false],
+            filterBarber: '',
+            prices1: false,
+            price2: false,
+            price3: false,
             sorting: 0,
             hairstyle: 0
-        }
-        this.searchChange = this.searchChange.bind(this);
+        };
+        this.handleSearch = this.handleSearch.bind(this);
+        this.handlePrice = this.handlePrice.bind(this);
+        this.handleSorting = this.handleSorting.bind(this);
+        this.handleHairstyle = this.handleHairstyle.bind(this);
     }
-    searchChange(filterWord){
+
+    handleSearch(filterBarber){
         this.setState({
-           filterWord : filterWord 
+            filterBarber: filterBarber
+        });
+        // every time there is a change, pass props to Barber.js
+    }
+
+    handlePrice(prices1, price2, price3){
+        this.setState({
+            prices1 : prices1,
+            prices2: prices2,
+            prices3: prices3
         });
     }
-	render() {
+
+    handleSorting(sorting){
+        this.setState({
+            sorting: sorting
+        });
+    }
+
+    handleHairstyle(hairstyle){
+        this.setState({
+            hairstyle: hairstyle
+        });
+    }
+
+    render() {
         return (
             <div>
-              <FiltersTable onSearch={this.searchChange} filteredWord = {this.state.filterWord}/>
-              <BarberDisplay />
+                <h1>Victor</h1>
+                <Search onSearchInput={this.handleSearch} filterBarber={this.state.filterBarber} />
+                <Price onHandlePrice = {this.handlePrice} prices1 = {this.state.prices1} prices2 = {this.state.prices2} prices3={this.state.prices3}/>
+                <Sorting onHandleSorting = {this.handleSorting}/>
+                <Hairstyle onHandleHairstyle = {this.handleHairstyle}/>
+
+                <BarberDisplay />
             </div>
         );
     }

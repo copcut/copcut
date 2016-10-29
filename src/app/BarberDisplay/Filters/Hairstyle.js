@@ -1,15 +1,10 @@
 import React from 'react'
+import Dropdown from 'react-dropdown'
 
 class Hairstyle extends React.Component{
     render() {
         return (
-            <select name="Hairstyle">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-            </select>
+            <Dropdown options={options} onChange={this._onSelect} value={defaultOption} placeholder="Select an option" />
         );
     }
 }

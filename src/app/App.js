@@ -4,7 +4,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Barber from './BarberDisplay/Barber'
-import FiltersTable from './BarberDisplay/Filters/FiltersTable'
 
 const barbers = [
     {

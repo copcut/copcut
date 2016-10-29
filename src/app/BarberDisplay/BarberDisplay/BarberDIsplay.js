@@ -6,7 +6,7 @@ import React from 'react'
 class BarberDisplay extends React.Component {
     render(){
         return(
-            <p> </p>
+            <p> BarberDisplay</p>
         );
     }
 }
