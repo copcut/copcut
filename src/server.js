@@ -25,7 +25,7 @@ app.set('views', __dirname+'/views/');
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
-app.use(express.static(__dirname+'/designs'));
+app.use(express.static(__dirname+'/static'));
 
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({
@@ -75,9 +75,11 @@ passport.use('local', new LocalStrategy({passReqToCallback : true}, (req, userna
 		});
 	}).asCallback(done, { spread: true });
 }));
-
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.get('/', (req, res) => {
+	res.render('home');
+});
 app.use('/', authenticationRoutes);
 app.listen(3000);
