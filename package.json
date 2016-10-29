@@ -44,6 +44,7 @@
     "gm": "^1.23.0",
     "gulp-install": "^0.6.0",
     "multer": "^1.2.0",
+    "multer-s3": "^2.3.2",
     "mysql": "^2.11.1",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",

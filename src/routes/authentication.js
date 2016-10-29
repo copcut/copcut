@@ -116,15 +116,14 @@ router.post('/registerBarber', upload.single('profilepicture'), (req, res) => {
 	req.checkBody('email', 'Enter a valid email address.').notEmpty().isEmail();
 	req.checkBody('birthday', 'Enter a valid birthday.').notEmpty().isDate();
 	req.checkBody('gender', 'Enter a valid gender.').notEmpty().isAlpha().isLength({min:1, max:1});
-	req.checkBody('address', 'Enter a valid username.').notEmpty().isAlphanumeric();
-	req.checkBody('city', 'Enter a valid username.').notEmpty().isAlphanumeric();
-	req.checkBody('country', 'Enter a valid username.').notEmpty().isAlphanumeric();
-	req.checkBody('postcode', 'Enter a valid username.').notEmpty().isAlphanumeric();
-	req.checkBody('phonenumber', 'Enter a valid username.').notEmpty().isAlphanumeric();
-	req.checkBody('profilepicture', 'Enter a valid username.').notEmpty().isAlphanumeric();
-	req.checkBody('yearscut', 'Enter a valid username.').notEmpty().isAlphanumeric();
-	req.checkBody('description', 'Enter a valid username.').notEmpty().isAlphanumeric();
-	
+	req.checkBody('address', 'Enter a valid address.').notEmpty();
+	req.checkBody('city', 'Enter a valid city.').notEmpty();
+	req.checkBody('country', 'Enter a valid country.').notEmpty();
+	req.checkBody('postcode', 'Enter a valid postcode.').notEmpty().isNumeric();
+	req.checkBody('phonenumber', 'Enter a valid US phone number.').notEmpty().isMobilePhone('en-US');
+	req.checkBody('yearscut', 'Enter a valid number.').notEmpty().isAlphanumeric();
+	req.checkBody('description', 'Enter a valid description.').notEmpty();
+
 	const errors = req.validationErrors();
 	if(errors) {
 		req.flash('errors', errors);
