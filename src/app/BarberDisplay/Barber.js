@@ -61,7 +61,14 @@ class Barbers extends React.Component{
                 <Sorting onHandleSorting = {this.handleSorting} sorting = {this.state.sorting}/>
                 <Hairstyle onHandleHairstyle = {this.handleHairstyle} hairstylte = {this.state.hairstyle}/>
 
-                <BarberDisplay />
+                <BarberDisplay filterBarber = {this.state.filterBarber}
+                               price1 = {this.state.price1}
+                               price2 = {this.state.price2}
+                               price3 = {this.state.price3}
+                               sorting = {this.state.sorting}
+                               hairstyle = {this.state.hairstyle}
+                               barbers = {this.props.profile}
+                />
             </div>
         );
     }
