@@ -10,11 +10,11 @@ class Price extends React.Component {
     }
     
     handleClick() {
-        this.props.onHandlePrice({
-            price1: this.refs.Price1.checked,
-            price2: this.refs.Price2.checked,
-            price3: this.refs.Price3.checked
-        });
+        this.props.onHandlePrice(
+            this.refs.Price1.checked,
+            this.refs.Price2.checked,
+            this.refs.Price3.checked
+        );
     }
 
     render() {

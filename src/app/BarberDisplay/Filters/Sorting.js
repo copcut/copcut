@@ -12,7 +12,7 @@ class Sorting extends React.Component{
         super(props);
         this.onSelect = this.onSelect.bind(this);
     }
-    
+
 	onSelect(option){
         this.props.onHandleSorting(this.refs.Dropdown.value);
     }
@@ -24,7 +24,7 @@ class Sorting extends React.Component{
                 ref = "Dropdown"
                 onChange={this.onSelect}
                 value={this.props.sorting}
-                placeholder="Select an option"
+                placeholder={this.props.sorting}
             />
 	    );
 	}

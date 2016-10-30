@@ -5,7 +5,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Barber from './BarberDisplay/Barber'
 
-const barbers = [
+const BARBERS = [
     {
     	firstname: "Victor", 
     	lastname: "Cheng", 
@@ -58,4 +58,4 @@ const barbers = [
 	},
 ];
 
-ReactDOM.render(<Barber profile = {barbers}/>, document.getElementById('app'));
+ReactDOM.render(<Barber profile = {BARBERS}/>, document.getElementById('app'));

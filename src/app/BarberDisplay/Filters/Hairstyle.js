@@ -23,7 +23,7 @@ class Hairstyle extends React.Component{
                 ref = "Dropdown"
                 onChange={this.onSelect}
                 value={this.props.hairstyle}
-                placeholder="Select an option"
+                placeholder={this.props.hairstyle}
             />
         );
     }
