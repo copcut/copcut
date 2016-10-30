@@ -3,10 +3,12 @@ html,body{
 	padding: 0;
 	color: white;
 	background-color: white;
-	font-family: "Montserrat";
+font-family: 'Ubuntu', sans-serif;
+
 }
-a{
+li{
 	transition: all 0.3s ease;
+	-webkit-transition: all 0.3s ease;
 	-moz-transition: all 0.3s ease;
 	-o-transition: all 0.3s ease;
 }
@@ -24,22 +26,22 @@ a:hover,a:visited{
 	background-size: cover;
 }
 .navbar-default{
-	padding: 0 2%;
 	border:none;
 	background: transparent;
 }
-.navbar-default .navbar-brand{
-	font-size: 20px;
+#logo-vert{
+	margin: 0 25px;
+}
+#logo{
+	font-size: 20px; 
+	text-decoration: none;
 	font-family: 'Quicksand', sans-serif;
 }
 .navbar-nav img{
-	height: 20px;
-	width: 20px;
+	height: 26px;
+	width: 26px;
 }
-.navbar-default li{
-	vertical-align: middle;
-}
-.navbar-default .navbar-brand,.navbar-default .navbar-nav>li>a{
+#logo,.navbar-default .navbar-nav>li>a{
 	color: white;
 }
 #header.header{
@@ -52,8 +54,29 @@ a:hover,a:visited{
 #header.header a{
 	color: black;
 }
-#header.header a:hover{
-	color: #9E9E9E;
+#header a{
+	display: table-cell;
+	vertical-align: middle;
+}
+#header .container-fluid{
+	padding: 0;
+}
+#header.header li:hover{
+	background-color: #edefed;
+}
+#header li a{
+	padding: 0 20px;
+}
+#header.header li{
+	border: 1px solid #edefed;
+}
+.navbar-default li,#logo-vert{
+	vertical-align: middle;
+	height: 60px;
+	display: table;
+}
+#header .navbar-right span{
+	margin-right: 10px;
 }
 footer{
 	color: #838994;
@@ -82,7 +105,7 @@ footer a{
 }
 #content{
 	min-height: 100%;
-	margin-top: 50px; /*adjusts content below to not hide behind fixed position header*/
+	margin-top: 60px; /*adjusts content below to not hide behind fixed position header*/
 }
 #content,#toggle-options{
 	color: black;
@@ -102,7 +125,7 @@ footer a{
 	border-left: 1px solid #d3d3d3;
 	position: fixed;
 	right: 0;
-	top: 50px;
+	top: 60px;
 }
 #barber-content{
 	width: 80%;
@@ -161,7 +184,9 @@ footer a{
 	width: 30%;
 	padding: 3% 2%;
 	margin: 3% 1%;
-	border-bottom: 1px solid #d3d3d3;
+	border: 1px solid #d3d3d3;
+	box-shadow: 0 1px #FFFFFF inset, 0 1px 3px rgba(34, 25, 25, 0.2);
+
 	text-align: center;
 	display: inline-block;
 }
@@ -207,11 +232,9 @@ md-checkbox{
 	vertical-align: middle; /*fixed issue with calendar icon and  input field being unaligned*/
 }
 #profileInfo{
-	width: 21%;
-	margin: 0 2%;
+	padding: 0 5%;
 }
 #moreInfo{
-	width: 74%;
 	height: 100%;
 }
 .one-sect{
@@ -237,7 +260,7 @@ md-checkbox{
 	margin: 0;
 }
 #content.padded{
-	padding: 2% 10%;
+	padding: 5% 10%;
 }
 .bot-right{
 	position: absolute;
@@ -258,17 +281,14 @@ md-checkbox{
 }
 #requests{
 	width: 100%;
-	height: 50%;
-	text-align: center;
+	border: 1px solid rgb(220, 224, 224)
 }
 iframe{
 	border:none;
 }
 #request-table{
-	height: 250px;
 	width: 100%;
 	padding: 2%;
-	overflow-y: scroll;
 }
 .entry{
 	text-align: left;
@@ -281,18 +301,12 @@ iframe{
 	color: #00b2e2;
 	font-size: 1.5vw;
 }
-.respond{
-	width: 39%;
-}
-.entry-info{
-	width: 84%;
-}
-.entry-actions{
-	width: 60%;
-}
-#content .entry-profilepic{
-	width: 15%;
-}
-.entry-profilepic img{
+.entry img{
 	width: 100%;
+}
+.table-header{
+	font-size: 16px;
+	padding: 2%;
+	width: 100%;
+	background-color: #edefed;
 }

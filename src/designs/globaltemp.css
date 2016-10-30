@@ -52,6 +52,8 @@ a:hover,a:visited{
 }
 #header.header a{
 	color: black;
+}
+#header a{
 	display: table-cell;
 	vertical-align: middle;
 }
@@ -61,7 +63,7 @@ a:hover,a:visited{
 #header.header li:hover{
 	background-color: #edefed;
 }
-#header.header li a{
+#header li a{
 	padding: 0 20px;
 }
 #header.header li{
@@ -72,8 +74,8 @@ a:hover,a:visited{
 	height: 60px;
 	display: table;
 }
-#header.header .navbar-right span{
-	margin-right: 15px;
+#header .navbar-right span{
+	margin-right: 10px;
 }
 footer{
 	color: #838994;
@@ -102,7 +104,7 @@ footer a{
 }
 #content{
 	min-height: 100%;
-	margin-top: 50px; /*adjusts content below to not hide behind fixed position header*/
+	margin-top: 60px; /*adjusts content below to not hide behind fixed position header*/
 }
 #content,#toggle-options{
 	color: black;
