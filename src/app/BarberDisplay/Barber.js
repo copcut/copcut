@@ -58,8 +58,8 @@ class Barbers extends React.Component{
                 <h1>Victor</h1>
                 <Search onSearchInput={this.handleSearch} filterBarber={this.state.filterBarber} />
                 <Price onHandlePrice = {this.handlePrice} prices1 = {this.state.prices1} prices2 = {this.state.prices2} prices3={this.state.prices3}/>
-                <Sorting onHandleSorting = {this.handleSorting}/>
-                <Hairstyle onHandleHairstyle = {this.handleHairstyle}/>
+                <Sorting onHandleSorting = {this.handleSorting} sorting = {this.state.sorting}/>
+                <Hairstyle onHandleHairstyle = {this.handleHairstyle} hairstylte = {this.state.hairstyle}/>
 
                 <BarberDisplay />
             </div>
