@@ -4,12 +4,18 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Barber from './BarberDisplay/Barber'
-
+/* Hairstyle (black haircut), Price, Search, Sorting
+filterBarber = {this.state.filterBarber}
+prices = {this.state.prices}
+sorting = {this.state.sorting}
+hairstyle = {this.state.hairstyle}
+barbers = {this.props.profile}
+*/
 const BARBERS = [
     {
     	firstname: "Victor", 
     	lastname: "Cheng", 
-    	cuts: ["All cuts", "Fade", "Bowlcut"],
+    	cuts: ["Select an option" ,"All cuts", "Fade", "Bowlcut"],
     	ratings: 1,
     	profilepicture: "i2.mirror.co.uk/incoming/article5423743.ece/ALTERNATES/s615b/MOST-BEAUTIFUL-FACES.jpg", 
     	rate: 13, 
@@ -17,9 +23,9 @@ const BARBERS = [
     	description: "I've ben cutting hair since I was born. I love touching people's hair"
     },
 	{
-		firstname: "david",
+		firstname: "David",
 		lastname: "Cheng",
-		cuts: ["All cuts"],
+		cuts: ["All cuts", "Select an option"],
 		ratings: 2,
 		profilepicture: "i2.mirror.co.uk/incoming/article5423743.ece/ALTERNATES/s615b/MOST-BEAUTIFUL-FACES.jpg",
 		rate: 16,
@@ -29,7 +35,7 @@ const BARBERS = [
 	{
 		firstname: "Danny",
 		lastname: "Cheng",
-		cuts: ["Buzzcut", "All cuts"],
+		cuts: ["Buzzcut", "All cuts", "Select an option"],
 		ratings: 4.6,
 		profilepicture: "i2.mirror.co.uk/incoming/article5423743.ece/ALTERNATES/s615b/MOST-BEAUTIFUL-FACES.jpg",
 		rate: 16,
@@ -39,7 +45,7 @@ const BARBERS = [
 	{
 		firstname: "Mitchel",
 		lastname: "Cheng",
-		cuts: ["All cuts", "Taper", "Bowlcut"],
+		cuts: ["All cuts", "Taper", "Bowlcut", "Select an option"],
 		ratings: 4.2,
 		profilepicture: "i2.mirror.co.uk/incoming/article5423743.ece/ALTERNATES/s615b/MOST-BEAUTIFUL-FACES.jpg",
 		rate: 21,
@@ -47,9 +53,9 @@ const BARBERS = [
 		description: "I've ben cutting hair since I was born. I love touching people's hair"
 	},
 	{
-		firstname: "Victor",
+		firstname: "Kushal",
 		lastname: "Cheng",
-		cuts: ["buzzcut"],
+		cuts: ["buzzcut", "Select an option"],
 		ratings: 3,
 		profilepicture: "i2.mirror.co.uk/incoming/article5423743.ece/ALTERNATES/s615b/MOST-BEAUTIFUL-FACES.jpg",
 		rate: 29,

@@ -13,9 +13,7 @@ class Barbers extends React.Component{
         super(props);
         this.state = {
             filterBarber: '',
-            prices1: false,
-            prices2: false,
-            prices3: false,
+            prices : [false, false, false],
             sorting: 0,
             hairstyle: "Select an option"
         };
@@ -34,9 +32,7 @@ class Barbers extends React.Component{
 
     handlePrice(prices1, prices2, prices3){
         this.setState({
-            prices1 : prices1,
-            prices2: prices2,
-            prices3: prices3
+           prices : [prices1, price2, prices3]
         });
     }
 
@@ -57,14 +53,13 @@ class Barbers extends React.Component{
             <div>
                 <h1>Victor</h1>
                 <Search onSearchInput={this.handleSearch} filterBarber={this.state.filterBarber} />
-                <Price onHandlePrice = {this.handlePrice} prices1 = {this.state.prices1} prices2 = {this.state.prices2} prices3={this.state.prices3}/>
+                <Price onHandlePrice = {this.handlePrice} prices = {this.state.prices}/>
                 <Sorting onHandleSorting = {this.handleSorting} sorting = {this.state.sorting}/>
                 <Hairstyle onHandleHairstyle = {this.handleHairstyle} hairstylte = {this.state.hairstyle}/>
 
-                <BarberDisplay filterBarber = {this.state.filterBarber}
-                   price1 = {this.state.price1}
-                   price2 = {this.state.price2}
-                   price3 = {this.state.price3}
+                <BarberDisplay
+                   filterBarber = {this.state.filterBarber}
+                   prices = {this.state.prices}
                    sorting = {this.state.sorting}
                    hairstyle = {this.state.hairstyle}
                    barbers = {this.props.profile}
