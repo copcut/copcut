@@ -3,7 +3,7 @@ html,body{
 	padding: 0;
 	color: white;
 	background-color: white;
-font-family: 'Ubuntu', sans-serif;
+	font-family: 'Ubuntu', sans-serif;
 
 }
 li{
@@ -52,7 +52,7 @@ a:hover,a:visited{
 	box-shadow: 0 1px #FFFFFF inset, 0 1px 3px rgba(34, 25, 25, 0.4);
 }
 #header.header a{
-	color: black;
+	color: #484848;
 }
 #header a{
 	display: table-cell;
@@ -108,7 +108,7 @@ footer a{
 	margin-top: 60px; /*adjusts content below to not hide behind fixed position header*/
 }
 #content,#toggle-options{
-	color: black;
+	color:#484848;
 }
 .barber-display img{
 	width: 50%;
@@ -178,15 +178,12 @@ footer a{
 	font-size: 15px;
 	height: 20px;
 	width: 60px; 
-	margin: 0;
+	margin: 0 auto;
 }
 .barber-display{
 	width: 30%;
 	padding: 3% 2%;
 	margin: 3% 1%;
-	border: 1px solid #d3d3d3;
-	box-shadow: 0 1px #FFFFFF inset, 0 1px 3px rgba(34, 25, 25, 0.2);
-
 	text-align: center;
 	display: inline-block;
 }
@@ -232,25 +229,15 @@ md-checkbox{
 	vertical-align: middle; /*fixed issue with calendar icon and  input field being unaligned*/
 }
 #profileInfo{
-	padding: 0 5%;
-}
-#moreInfo{
-	height: 100%;
+	padding: 0 2%;
 }
 .one-sect{
 	width: 100%;
-	display: table;
-}
-#content .profilepic{
-	width: 25%;
-	padding-right: 5%;
+	text-align: center;
+	padding-bottom: 16px;
 }
 .profilepic img{
 	width: 100%;
-}
-#content .inline,#content .profilepic{
-	display: table-cell;
-	vertical-align: middle;
 }
 .inline{
 	width: 59%;
@@ -260,7 +247,7 @@ md-checkbox{
 	margin: 0;
 }
 #content.padded{
-	padding: 5% 10%;
+	padding: 1% 10%;
 }
 .bot-right{
 	position: absolute;
@@ -279,17 +266,6 @@ md-checkbox{
 	transform: rotate(360deg);
 	-webkit-transform:rotate(360deg);
 }
-#requests{
-	width: 100%;
-	border: 1px solid rgb(220, 224, 224)
-}
-iframe{
-	border:none;
-}
-#request-table{
-	width: 100%;
-	padding: 2%;
-}
 .entry{
 	text-align: left;
 }
@@ -302,11 +278,34 @@ iframe{
 	font-size: 1.5vw;
 }
 .entry img{
-	width: 100%;
+	width: 75px;
+	height: 75px;
 }
 .table-header{
-	font-size: 16px;
-	padding: 2%;
+	font-size: 18px;
+	padding: 14px 20px;
 	width: 100%;
 	background-color: #edefed;
+}
+.table{
+	width: 100%;
+	margin: 16px;
+}
+.table-info{
+	width: 100%;
+	padding: 14px 20px;
+}
+.box{
+	border: 1px solid #d3d3d3;
+	box-shadow: 0 1px #FFFFFF inset, 0 1px 3px rgba(34, 25, 25, 0.2);
+}
+.btn-info{
+	background-color: #00b2e2;
+}
+#content .entry{
+	padding: 10px 0;
+	border-bottom: 1px solid #d3d3d3;
+}
+.response{
+	margin-top: 35px;
 }
