@@ -20,6 +20,7 @@ Database.initialize().then(() => {
 	 process.exit(0);
 }); //run this only first time app is run. comment everything else after this out
 */
+
 const app = express();
 app.use(express.static(__dirname+'/static'));
 
@@ -54,6 +55,7 @@ app.use(session({
 configurePassport(passport);
 app.use(passport.initialize());
 app.use(passport.session());
+
 
 app.get('/', (req, res) => {
 	if(req.isAuthenticated()) {
