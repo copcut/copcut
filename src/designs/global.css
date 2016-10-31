@@ -403,3 +403,9 @@ md-checkbox{
 	margin: 0;
 	vertical-align: middle;
 }
+.fb{
+	padding: 0;
+	border:none;
+	background-color: transparent;
+	box-shadow: none;
+}
