@@ -1,6 +1,7 @@
 import Database from './database'
 import User from './user'
 import Promise from 'bluebird'
+import { BarberNotFoundError } from '../config/errors'
 
 const Barber = () => {
 	const getReviewData = id => {
@@ -63,11 +64,40 @@ const Barber = () => {
 		getBarber(username) {
 			const getFromBarbers = id => {
 				return Promise.using(Database.getConnection(), connection => {
-					return connection.queryAsync('SELECT * FROM barbers WHERE id=?', id);
-				}).then(data => Promise.resolve(data[0]));
+					return connection.queryAsync(`
+						SELECT 
+							user.id as id, 
+							user.username as username, 
+							user.firstname as firstname,
+							user.lastname as lastname,
+							barber.city as city, 
+							barber.postcode as postcode,
+							barber.yearscut as yearscut,
+							barber.description as description,
+							barber.averagerating as averagerating,
+							barber.reviewnumber as reviewnumber
+						FROM users as user 
+						LEFT JOIN barbers as barber ON barber.id = user.id 
+						WHERE user.id = ?
+				`, id);
+				});
+			}
+
+			const getCuts = id => {
+				return Promise.using(Database.getConnection(), connection => {
+					return connection.queryAsync('SELECT cut FROM barbercuts WHERE barberid=?', id);
+				});
 			}
 			
-			return User.getIdFromUsername(username).then(getFromBarbers);
+			return User.getIdFromUsername(username)
+				   .then(id => {
+				   		return Promise.all([getFromBarbers(id), getCuts(id)]);
+				   	})
+				   .then(data => {
+				   		if(data.postcode == null) throw new BarberNotFoundError();
+				   		data[0][0].cuts = data[1];
+				   		return Promise.resolve(data[0][0]);
+				   });
 		},
 
 		removeBarber(username) {
@@ -76,7 +106,6 @@ const Barber = () => {
 		},
 
 		updateReviewData(id, rating, oldRating, adding) {
-
 			const updateQuery = data => {
 				let totalStars = data.reviewnumber * data.averagerating;
 				totalStars += (rating-oldRating);

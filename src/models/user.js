@@ -62,11 +62,20 @@ const User = () => {
 
 	return {
 		getIdFromUsername(username) {
-			return Promise.using(Database.getConnection(), connection => {
-				return connection.queryAsync('SELECT id FROM users WHERE username=?', username);
-			})
+			const getQuery = name => Promise.using(Database.getConnection(), connection => {
+				return connection.queryAsync('SELECT id FROM users WHERE username=?', name);
+			});
+
+			return getQuery(username)
 			.then(data => checkIfExists(data, UserNotFoundError, true))
 			.then(data => Promise.resolve(data[0].id));
+		},
+
+		getUsernameFromId(id) {
+			return Promise.using(Database.getConnection(), connection => {
+				return connection.queryAsync('SELECT username, firstname, middlename, lastname FROM users WHERE id=?', id);
+			})
+			.then(data => Promise.resolve(data[0]));
 		},
 
 		addUser(data) {

@@ -1,10 +1,10 @@
 import express from 'express'
 import path from 'path'
 import multer from 'multer'
-import Barber from '../models/barber'
-import User from '../models/user'
+import Barber from '../../models/barber'
+import User from '../../models/user'
 import passport from 'passport'
-import { UsernameExistsError, EmailExistsError, UsernameEmailExistsError } from '../config/errors'
+import { UsernameExistsError, EmailExistsError, UsernameEmailExistsError } from '../../config/errors'
 
 const storage = multer.diskStorage({
 	destination(req, file, cb) {
@@ -21,6 +21,7 @@ const router = express.Router();
 
 router.get('/login', (req, res) => {
     res.render('login', {error: req.flash('loginMessage'), username: req.flash('loginUsername')});
+    req.flash('loginMessage', '');
 });
 
 router.post('/login', passport.authenticate('local', {
@@ -34,11 +35,11 @@ router.get('/logout', (req, res) => {
     res.redirect('/');
 });
 
-router.get('/registerUser', (req, res) => {
+router.get('/register/user', (req, res) => {
     res.render('registerUser', {errors: req.flash('errors'), info: req.flash('info')[0]});
 });
 
-router.post('/registerUser', upload.single(), (req, res) => {
+router.post('/register/user', upload.single(), (req, res) => {
 	const data = {
 		username: req.body.username,
 		firstname: req.body.firstname,
@@ -67,35 +68,35 @@ router.post('/registerUser', upload.single(), (req, res) => {
 	}
 	else {
 		User.addUser(data)
-		.then(() => res.redirect('/'))
+		.then(() => res.redirect('/login'))
 		.catch(UsernameExistsError, error => {
 			req.flash('errors', [{msg: 'The username you selected already exists.'}]);
 			req.flash('info', data);
-			res.redirect('/registerUser');
+			res.redirect('/register/user');
 		})
 		.catch(EmailExistsError, error => {
 			req.flash('errors', [{msg: 'The email you selected already exists.'}]);
 			req.flash('info', data);
-			res.redirect('/registerUser');
+			res.redirect('/register/user');
 		})
 		.catch(UsernameEmailExistsError, error => {
 			req.flash('errors', [{msg: 'The username you selected already exists.'}, {msg: 'The email you selected already exists.'}]);
 			req.flash('info', data);
-			res.redirect('/registerUser');
+			res.redirect('/register/user');
 		})
 		.catch(error => {
 			req.flash('errors', [{msg: 'Your request could not be processed.'}]);
 			req.flash('info', data);
-			res.redirect('/registerUser');
+			res.redirect('/register/user');
 		});
 	}
 });
 
-router.get('/registerBarber', (req, res) => {
+router.get('/register/barber', (req, res) => {
     res.render('registerBarber', {errors: req.flash('errors'), info: req.flash('info')[0]});
 });
 
-router.post('/registerBarber', upload.single('profilepicture'), (req, res) => {
+router.post('/register/barber', upload.single('profilepicture'), (req, res) => {
 	const data = {
 		username: req.body.username,
 		firstname: req.body.firstname,
@@ -135,30 +136,30 @@ router.post('/registerBarber', upload.single('profilepicture'), (req, res) => {
 	if(errors) {
 		req.flash('errors', errors);
 		req.flash('info', data);
-		res.redirect('/registerBarber');
+		res.redirect('/register/barber');
 	}
 	else {
 		Barber.addBarber(data)
-		.then(() => res.redirect('/'))
+		.then(() => res.redirect('/login'))
 		.catch(UsernameExistsError, error => {
 			req.flash('errors', [{msg: 'The username you selected already exists.'}]);
 			req.flash('info', data);
-			res.redirect('/registerBarber');
+			res.redirect('/register/barber');
 		})
 		.catch(EmailExistsError, error => {
 			req.flash('errors', [{msg: 'The email you selected already exists.'}]);
 			req.flash('info', data);
-			res.redirect('/registerBarber');
+			res.redirect('/register/barber');
 		})
 		.catch(UsernameEmailExistsError, error => {
 			req.flash('errors', [{msg: 'The username you selected already exists.'}, {msg: 'The email you selected already exists.'}]);
 			req.flash('info', data);
-			res.redirect('/registerBarber');
+			res.redirect('/register/barber');
 		})
 		.catch(error => {
 			req.flash('errors', [{msg: 'Your request could not be processed.'}]);
 			req.flash('info', data);
-			res.redirect('/registerBarber');
+			res.redirect('/register/barber');
 		});
 	}
 });

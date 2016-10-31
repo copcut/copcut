@@ -10,4 +10,7 @@ UserNotFoundError.prototype = Object.create(Error.prototype);
 function UsernameEmailExistsError() {}
 UsernameEmailExistsError.prototype = Object.create(Error.prototype);
 
-export { UsernameExistsError, EmailExistsError, UserNotFoundError, UsernameEmailExistsError };
+function BarberNotFoundError() {}
+UsernameEmailExistsError.prototype = Object.create(Error.prototype);
+
+export { UsernameExistsError, EmailExistsError, UserNotFoundError, UsernameEmailExistsError, BarberNotFoundError };

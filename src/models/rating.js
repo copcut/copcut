@@ -51,7 +51,7 @@ const Rating = () => {
 			});
 		},
 
-		getCutsByBarber(username) {
+		getPastCutsByBarber(username) {
 			const getCutsByBarberQuery = id => {
 				return Promise.using(Database.getConnection(), connection => {
 					return connection.queryAsync('SELECT * FROM ratings WHERE barberid=?', id);
@@ -61,7 +61,7 @@ const Rating = () => {
 			return User.getIdFromUsername(username).then(getCutsByBarberQuery);
 		},
 
-		getCutsByUser(username) {
+		getPastCutsByUser(username) {
 			const getCutsByUserQuery = id => {
 				return Promise.using(Database.getConnection(), connection => {
 					return connection.queryAsync('SELECT * FROM ratings WHERE userid=?', id);
