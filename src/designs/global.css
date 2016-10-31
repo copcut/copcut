@@ -6,6 +6,9 @@ html,body{
 	font-family: 'Ubuntu', sans-serif;
 
 }
+a{
+	color: #00b2e2;
+}
 li{
 	transition: all 0.3s ease;
 	-webkit-transition: all 0.3s ease;
@@ -83,7 +86,6 @@ footer{
 	padding: 3% 20% 0% 20%;
 }
 footer a{
-	color: #00b2e2;
 	margin-right: 5%;
 }
 #policy{
@@ -187,9 +189,6 @@ footer a{
 	text-align: center;
 	display: inline-block;
 }
-.btn{
-	font-size: 1vw;
-}
 .content-heading{
 	display: block;
 	text-align: center;
@@ -234,17 +233,16 @@ md-checkbox{
 .one-sect{
 	width: 100%;
 	text-align: center;
-	padding-bottom: 16px;
+	position: relative;
+}
+.one-sect .btn{
+	padding: 7px 15%;
 }
 .profilepic img{
 	width: 100%;
 }
 .inline{
-	width: 59%;
-	position: relative;
-}
-.inline h4{
-	margin: 0;
+	display: inline;
 }
 #content.padded{
 	padding: 1% 10%;
@@ -270,12 +268,12 @@ md-checkbox{
 	text-align: left;
 }
 .message{
-	font-size: 1vw;
+	font-size: 14px;
 	color: #90949c;
 }
 .entry h4{
 	color: #00b2e2;
-	font-size: 1.5vw;
+	font-size: 20px
 }
 .entry img{
 	width: 75px;
@@ -306,6 +304,41 @@ md-checkbox{
 	padding: 10px 0;
 	border-bottom: 1px solid #d3d3d3;
 }
+#content .entry.last{
+	border:none;
+}
 .response{
 	margin-top: 35px;
+}
+.nopad{
+	padding: 0;
+}
+.table-info>a,.one-sect>a{
+	display: block;
+	margin: 5px 0 10px 0;
+}
+.right{
+	float: right;
+}
+.btn{
+	font-weight: bold;
+}
+#content .block{
+	display: block;
+}
+.trans-header{
+	width: 100%;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #d3d3d3;
+}
+.money-info{
+	width: 60%;
+}
+.trans-entry .trans-date{
+	margin-right: 10px;
+	width: 60px;
+}
+.trans-entry p{
+	margin: 0;
 }
