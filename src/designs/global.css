@@ -8,6 +8,10 @@ html,body{
 }
 a{
 	color: #00b2e2;
+	transition: all 0.3s ease;
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
 }
 li{
 	transition: all 0.3s ease;
@@ -15,7 +19,7 @@ li{
 	-moz-transition: all 0.3s ease;
 	-o-transition: all 0.3s ease;
 }
-a:hover,a:visited{
+a:hover,a:visited,a:focus{
 	text-decoration: none;
 }
 #header{
@@ -47,14 +51,14 @@ a:hover,a:visited{
 #logo,.navbar-default .navbar-nav>li>a{
 	color: white;
 }
-#header.header{
+.header{
 	background-color: white;
 	z-index: 5;
 	position: fixed;
 	top: 0;
 	box-shadow: 0 1px #FFFFFF inset, 0 1px 3px rgba(34, 25, 25, 0.4);
 }
-#header.header a{
+#header.header ul>li>a{
 	color: #484848;
 }
 #header a{
@@ -109,7 +113,7 @@ footer a{
 	min-height: 100%;
 	margin-top: 60px; /*adjusts content below to not hide behind fixed position header*/
 }
-#content,#toggle-options{
+#content,#toggle-options,.popUp{
 	color:#484848;
 }
 .barber-display img{
@@ -300,6 +304,15 @@ md-checkbox{
 .btn-info{
 	background-color: #00b2e2;
 }
+.btn-outline-info{
+	border-color: #00b2e2;
+	background-color: transparent;
+	color: #00b2e2;
+}
+.btn-outline-info:hover{
+	background-color: #00b2e2;
+	color: white;
+}
 #content .entry{
 	padding: 10px 0;
 	border-bottom: 1px solid #d3d3d3;
@@ -341,4 +354,52 @@ md-checkbox{
 }
 .trans-entry p{
 	margin: 0;
+}
+.popupContainer{
+	display: none;
+	position: fixed;
+	background-color: rgba(0,0,0,0.6);
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	padding: 5% 0 0 0;
+}
+.popUp{
+	width: 35%;
+	margin:0 auto;
+	padding: 25px;
+	background-color: white;
+	border: 1px solid white;
+	border-radius: 3px;
+}
+.log-fb,.log-email input,.divider{
+	margin-bottom: 20px;
+}
+.log-fb img,.log-email input{
+	width: 100%;
+}
+.log-email input{
+	padding: 20px 15px;
+	border-radius: 3px;
+	border: 1px solid #d3d3d3;
+}
+.divider{
+	text-align: center;
+}
+.full-width{
+	width: 100%;
+	display: block;
+}
+.full-width.btn{
+	font-size: 20px;
+	padding: 15px;
+}
+.vert-mid-group{
+	display: block;
+}
+.vert-mid-group p,.vert-mid-group .btn{
+	display: inline-block;
+	margin: 0;
+	vertical-align: middle;
 }
