@@ -13,6 +13,7 @@ class BarberDisplay extends React.Component {
         //set prices range
         this.props.prices.forEach((price) => {
             if(price){
+                var temp = price.index + 10;
                 prices.push(price.index);
             }
         });
@@ -23,20 +24,23 @@ class BarberDisplay extends React.Component {
                 prices.length == 0){
                 return;
             }
-
-            // include logic for cuts
+            //
+            // include logic for prices, sorting
             if(barber.cuts.indexOf(this.props.hairstyle) >= 0 ){
-                var shortDescription = barber.description.substring(0,120);
-                row.push(
-                    <IndividualBarber
-                        name = {barber.firstname.concat(' ', barber.lastname)} 
-                        yoe = {barber.yearscut}
-                        description = shortDescription
-                        rate = {barber.rate}
-                        review = {barber.ratings}
-                        picture = {barber.profilepicture}
-                    />
-                );
+                //barber.rate
+                if(barber.rate) {
+                    var shortDescription = barber.description.substring(0, 120);
+                    row.push(
+                        <IndividualBarber
+                            name={barber.firstname.concat(' ', barber.lastname)}
+                            yoe={barber.yearscut}
+                            description=shortDescription
+                            rate={barber.rate}
+                            review={barber.ratings}
+                            picture={barber.profilepicture}
+                        />
+                    );
+                }
             }
         });
 
