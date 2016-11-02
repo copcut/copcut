@@ -1,7 +1,7 @@
 /**
  * Created by Victor on 10/30/2016.
  */
-
+import React from 'react'
 
 class IndividualBarber extends React.Component{
 
@@ -19,3 +19,5 @@ class IndividualBarber extends React.Component{
         );
     }
 }
+
+export default IndividualBarber;

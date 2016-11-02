@@ -32,7 +32,7 @@ class Barbers extends React.Component{
 
     handlePrice(prices1, prices2, prices3){
         this.setState({
-           prices : [prices1, price2, prices3]
+           prices : [prices1, prices2, prices3]
         });
     }
 

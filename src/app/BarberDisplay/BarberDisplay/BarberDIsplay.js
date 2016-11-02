@@ -3,7 +3,7 @@
  */
 import React from 'react'
 import IndividualBarber from './IndividualBarber'
-import SortingAlgo from 'SortingAlgo'
+import SortingAlgo from './SortingAlgo'
 
 class BarberDisplay extends React.Component {
     render(){
@@ -13,35 +13,32 @@ class BarberDisplay extends React.Component {
         //set prices range
         this.props.prices.forEach((price) => {
             if(price){
-                var temp = price.index + 10;
-                prices.push(price.index);
+                var temp = 10* (price.index + 1);
+                prices.push(temp);
             }
         });
-
+        // fix Search to be non case sensitive and can look for any of them
         this.props.barbers.forEach((barber) => {
             if(barber.firstname.concat(' ', barber.lastname).indexOf(this.props.filterBarber) === -1 ||
                 barber.cuts.indexOf(this.props.hairstyle) < 0 ||
-                prices.length == 0){
+                prices.length < 0){
                 return;
             }
-            //
             // include logic for prices, sorting
             if(barber.cuts.indexOf(this.props.hairstyle) >= 0 ){
                 //barber.rate
-                if(barber.rate) {
                     var shortDescription = barber.description.substring(0, 120);
-                    row.push(
+                    rows.push(
                         <IndividualBarber
                             name={barber.firstname.concat(' ', barber.lastname)}
                             yoe={barber.yearscut}
-                            description=shortDescription
+                            description={shortDescription}
                             rate={barber.rate}
                             review={barber.ratings}
                             picture={barber.profilepicture}
                         />
                     );
                 }
-            }
         });
 
         //include sorting by whatever on cuts.
