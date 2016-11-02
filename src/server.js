@@ -33,8 +33,6 @@ app.set('views', __dirname+'/views/');
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
-
-
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({
   extended: true
