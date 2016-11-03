@@ -65,16 +65,5 @@ const BARBERS = [
 
 
 
-//DASHBOARD JSON DATA
-
-const Dashboard = [
-	{
-		profilepicture: "i2.mirror.co.uk/incoming/article5423743.ece/ALTERNATES/s615b/MOST-BEAUTIFUL-FACES.jpg",
-		firstname: "David",
-		lastname: "Cheng",
-		venmo: "@danny-cho-3",
-
-	},
-]
 
 ReactDOM.render(<Barber profile = {BARBERS}/>, document.getElementById('app'));
