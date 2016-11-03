@@ -25,11 +25,13 @@ class BarberDisplay extends React.Component {
                 return;
             }
             // include logic for prices, sorting
+            // include unique key for each component
             if(barber.cuts.indexOf(this.props.hairstyle) >= 0 ){
                 //barber.rate
                     var shortDescription = barber.description.substring(0, 120);
                     rows.push(
                         <IndividualBarber
+                            keys = {barber.id}
                             name={barber.firstname.concat(' ', barber.lastname)}
                             yoe={barber.yearscut}
                             description={shortDescription}
