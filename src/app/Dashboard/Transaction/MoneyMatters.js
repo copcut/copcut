@@ -16,6 +16,7 @@ class MoneyMatters extends React.Component{
         //add additional html
         return(
             <div>
+                <a href="#"> View details </a>
                 <h3> {this.props.totalEarnings} </h3>
                 <h3> {this.props.totalAmount} </h3>
                 <h3> {this.props.mostCutsAday} </h3>

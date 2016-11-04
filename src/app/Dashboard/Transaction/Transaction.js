@@ -16,9 +16,9 @@ class Transaction extends React.Component{
         var row = [];
         return(
             <div>
+                <h1> Transaction Detail </h1>
                 < RecentCut />
                 < MoneyMatters totalEarnings = {this.props.totalEarnings} totalAmount = {this.props.totalAmount} mostCutsAday = {this.props.mostCutsAday}/>
-                <h1> hello </h1>
             </div>
         );
     }
