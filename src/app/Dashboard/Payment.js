@@ -12,7 +12,10 @@ class Payment extends React.Component{
     render(){
         //add additional html
         return(
-            <h1> {this.props.venmo} </h1>
+            <div>
+                <h1> Payment </h1>
+                <h1> {this.props.venmo} </h1>
+            </div>
         );
     }
 }

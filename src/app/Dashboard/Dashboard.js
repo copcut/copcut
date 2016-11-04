@@ -5,6 +5,7 @@ import Profile from './Profile'
 import Payment from './Payment'
 import RequestDashboard from './Requests/RequestDashboard'
 import Transaction from './Transaction/Transaction'
+import QuickLinks from 'QuickLinks'
 
 
 
@@ -18,7 +19,7 @@ const DASHBOARD = [
         totalAmount: 25,
         mostCutsAday: 5
     }
-]
+];
 
 class Dashboard extends React.Component{
     constructor(props) {
@@ -32,7 +33,7 @@ class Dashboard extends React.Component{
                 <Payment venmo = {DASHBOARD.venmo}/>
                 <QuickLinks/>
                 <RequestDashboard />
-                <Transaction />
+                <Transaction totalEarnings = {DASHBOARD.totalEarnings} totalAmount = {DASHBOARD.totalAmount} mostCutsAday = {DASHBOARD.mostCutsAday}/>
             </div>
 
         );

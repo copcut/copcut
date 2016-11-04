@@ -11,7 +11,12 @@ class QuickLinks extends React.Component{
     }
     render(){
         return(
-           <a href ="#"> Upcoming Cuts </a>
+            <div>
+                <a href ="#"> Upcoming Cuts </a>
+                <a href ="#"> Scheduling with Copcut</a>
+                <a href ="#"> Cutting with Copcut </a>
+                <a href ="#"> Help Center </a>
+           </div>
         );
     }
 }

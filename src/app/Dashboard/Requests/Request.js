@@ -5,7 +5,7 @@
  * Created by Victor on 11/2/2016.
  */
 
-class Reauest extends React.Component{
+class Request extends React.Component{
     constructor(props){
         super(props);
     }
@@ -15,4 +15,4 @@ class Reauest extends React.Component{
         );
     }
 }
-export default Requests;
+export default Request;
