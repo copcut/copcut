@@ -477,3 +477,15 @@ md-checkbox{
 .sm-section{
 	margin: 10px 0;
 }
+.msg-badge span:hover{
+	transform: translate(0px,-2px);
+	-webkit-transform: translate(0px,-2px);
+	-moz-transform: translate(0px,-2px);
+	-o-transform: translate(0px,-2px);
+}
+.msg-badge span{
+	transition: all 0.2s ease;
+	-webkit-transition: all 0.2s ease;
+	-moz-transition: all 0.2s ease;
+	-o-transition: all 0.2s ease;
+}
