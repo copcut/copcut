@@ -6,6 +6,9 @@ html,body{
 	font-family: 'Ubuntu', sans-serif;
 
 }
+form{
+	text-align: left;
+}
 img{
 	width: 100%;
 }
@@ -243,7 +246,8 @@ md-checkbox{
 	position: relative;
 }
 .bigger-btn{
-	padding: 7px 15%;
+	width: 80%;
+	padding: 10px 15%;
 }
 .profilepic img{
 	width: 100%;
@@ -454,7 +458,7 @@ md-checkbox{
 	margin-bottom: 15px;
 }
 .booking-table{
-	margin-top: -56px;
+	margin-top: -40px;
 }
 #content .booking-table .table-header{
 	padding: 10px;
@@ -466,4 +470,7 @@ md-checkbox{
 }
 .section{
 	margin: 25px 0;
+}
+.sm-section{
+	margin: 10px 0;
 }
