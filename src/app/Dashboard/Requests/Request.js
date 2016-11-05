@@ -15,7 +15,7 @@ class Request extends React.Component{
     Decline(){
         this.props.onDecline();
     }
-    render(){
+    render(){  
         return(
             <div>
                 <img src={this.props.user_picture} > </img>
