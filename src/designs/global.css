@@ -373,7 +373,7 @@ md-checkbox{
 .money-info{
 	width: 60%;
 }
-.trans-entry .trans-date{
+#content .trans-entry .trans-date{
 	margin-right: 10px;
 	width: 60px;
 }
