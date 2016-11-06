@@ -4,7 +4,7 @@
 /**
  * Created by Victor on 11/2/2016.
  */
-
+import React from 'react'
 class Request extends React.Component{
     constructor(props){
         super(props);
@@ -15,10 +15,10 @@ class Request extends React.Component{
     Decline(){
         this.props.onDecline();
     }
-    render(){  
+    render(){
         return(
             <div>
-                <img src={this.props.user_picture} > </img>
+                <img src = {this.props.user_picture} > </img>
                 <h1> {this.props.user_firstname} {this.props.user_lastname} </h1>
                 <h3> {this.props.user_message} </h3>
                 <h3> {this.props.date_time} </h3>

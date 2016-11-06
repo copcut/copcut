@@ -4,7 +4,7 @@
 /**
  * Created by Victor on 11/2/2016.
  */
-
+import React from 'react'
 class QuickLinks extends React.Component{
     constructor(props){
         super(props);

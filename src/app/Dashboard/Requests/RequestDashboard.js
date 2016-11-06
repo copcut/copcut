@@ -5,6 +5,7 @@
  * Created by Victor on 11/2/2016.
  */
 import Request from './Request'
+import React from 'react'
 var USER_REQUESTS = [
     {
         user_firstname : "Victor",

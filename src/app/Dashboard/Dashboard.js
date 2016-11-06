@@ -5,7 +5,8 @@ import Profile from './Profile'
 import Payment from './Payment'
 import RequestDashboard from './Requests/RequestDashboard'
 import Transaction from './Transaction/Transaction'
-import QuickLinks from 'QuickLinks'
+import QuickLinks from './QuickLinks'
+import React from 'react'
 
 
 
@@ -29,11 +30,11 @@ class Dashboard extends React.Component{
     render(){
         return(
             <div>
-                <Profile barberpic = {DASHBOARD.barberpic} firstname = {DASHBOARD.firstname} lastname = {DASHBOARD.lastname}/>
-                <Payment venmo = {DASHBOARD.venmo}/>
+                <Profile barberpic = {DASHBOARD[0].barberpic} firstname = {DASHBOARD[0].firstname} lastname = {DASHBOARD[0].lastname}/>
+                <Payment venmo = {DASHBOARD[0].venmo}/>
                 <QuickLinks/>
                 <RequestDashboard />
-                <Transaction totalEarnings = {DASHBOARD.totalEarnings} totalAmount = {DASHBOARD.totalAmount} mostCutsAday = {DASHBOARD.mostCutsAday}/>
+                <Transaction totalEarnings = {DASHBOARD[0].totalEarnings} totalAmount = {DASHBOARD[0].totalAmount} mostCutsAday = {DASHBOARD[0].mostCutsAday}/>
             </div>
 
         );

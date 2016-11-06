@@ -4,12 +4,15 @@
 /**
  * Created by Victor on 11/2/2016.
  */
-
+import React from 'react'
 class Profile extends React.Component{
     constructor(props){
         super(props);
     }
+
+
     render(){
+      
         return(
             <div>
               <img src={this.props.barberpic} > </img>

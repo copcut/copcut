@@ -1,6 +1,7 @@
 /**
  * Created by Victor on 11/3/2016.
  */
+import React from 'react'
 class IndividualCuts extends React.Component{
     constructor(props){
         super(props);

@@ -6,6 +6,7 @@
  */
 import RecentCut from './RecentCut'
 import MoneyMatters from './MoneyMatters'
+import React from 'react'
 
 
 class Transaction extends React.Component{

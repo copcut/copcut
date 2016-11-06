@@ -7,6 +7,7 @@
 /**
  * Created by Victor on 11/2/2016.
  */
+import React from 'react'
 import IndividualCuts from './IndividualCuts'
 var CUTS = [
     {
