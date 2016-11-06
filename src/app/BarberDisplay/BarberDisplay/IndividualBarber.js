@@ -14,7 +14,7 @@ class IndividualBarber extends React.Component{
                 <td>{this.props.description}</td>
                 <td>{this.props.rate}</td>
                 <td>{this.props.review}</td>
-                <td>{this.props.picture}</td>
+                <td><img src={this.props.picture} /></td>
             </tr>
         );
     }
