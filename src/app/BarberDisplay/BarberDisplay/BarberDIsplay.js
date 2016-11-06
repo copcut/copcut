@@ -37,15 +37,17 @@ class BarberDisplay extends React.Component {
             //search filtering
             var matcher_first = new RegExp("/" + barber.firstname + "/", "i");
             var matcher_last = new RegExp("/" + barber.lastname + "/", "i");
-
-            if ((matcher_first.test(this.props.filterBarber) || matcher_last.test(this.props.filterBarber)) &&
+/*
+            if ((matcher_first.test(this.props.filterBarber.toLowerCase()) || matcher_last.test(this.props.filterBarber.toLowerCase())) &&
                 barber.cuts.indexOf(this.props.hairstyle) >= 0 &&
-                this.props.prices[pricecategory] == true)
+                (this.props.prices[pricecategory] == true || this.props.prices.every(elem => elem == false)))
+                */
+            if( barber.cuts.indexOf(this.props.hairstyle) >= 0)
             {
                 var shortDescription = barber.description.substring(0, 120);
                 rows.push(
                     <IndividualBarber
-                        keys={barber.id}
+                        key={barber.id}
                         name={barber.firstname.concat(' ', barber.lastname)}
                         yoe={barber.yearscut}
                         description={shortDescription}

@@ -80,7 +80,7 @@ class RequestDashboard extends React.Component{
                         onDecline = {this.onDecline}
                         index1 = {index1}
                         index2 = {index2}
-                        keys={user.id}
+                        key={user.id}
                         user_picture = {user.user_picture}
                         user_firstname = {user.user_firstname}
                         user_lastname = {user.user_lastname}

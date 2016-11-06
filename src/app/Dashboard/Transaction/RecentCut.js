@@ -47,7 +47,7 @@ class RecentCut extends React.Component{
         CUTS.forEach( (user) => {
             rows.push(
                 <IndividualCuts
-                    keys = {user.key}
+                    key = {user.key}
                     firstname = {user.user_firstname}
                     lastname = {user.user_lastname}
                     date = {user.date}

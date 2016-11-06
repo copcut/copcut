@@ -10,8 +10,8 @@ import BarberDisplay from './BarberDisplay/BarberDisplay'
 // BARBERDISPLAY JSON DATA
 const BARBERS = [
     {
-        firstname: "Victor",
-        lastname: "Cheng",
+        firstname: "victor",
+        lastname: "cheng",
         id: 1,
         cuts: ["Select an option" ,"All cuts", "Fade", "Bowlcut"],
         ratings: 1,
@@ -22,8 +22,8 @@ const BARBERS = [
         description: "I've ben cutting hair since I was born. I love touching people's hair"
     },
     {
-        firstname: "David",
-        lastname: "Cheng",
+        firstname: "david",
+        lastname: "cheng",
         id: 2,
         cuts: ["All cuts", "Select an option"],
         ratings: 2,
@@ -34,8 +34,8 @@ const BARBERS = [
         description: "I've ben cutting hair since I was born. I love touching people's hair"
     },
     {
-        firstname: "Danny",
-        lastname: "Cheng",
+        firstname: "danny",
+        lastname: "cheng",
         id: 3,
         cuts: ["Buzzcut", "All cuts", "Select an option"],
         ratings: 4.6,
@@ -46,8 +46,8 @@ const BARBERS = [
         description: "I've ben cutting hair since I was born. I love touching people's hair"
     },
     {
-        firstname: "Mitchel",
-        lastname: "Cheng",
+        firstname: "mitchel",
+        lastname: "cheng",
         id: 4,
         cuts: ["All cuts", "Taper", "Bowlcut", "Select an option"],
         ratings: 4.2,
@@ -58,8 +58,8 @@ const BARBERS = [
         description: "I've ben cutting hair since I was born. I love touching people's hair"
     },
     {
-        firstname: "Kushal",
-        lastname: "Cheng",
+        firstname: "kushal",
+        lastname: "cheng",
         id: 5,
         cuts: ["buzzcut", "Select an option"],
         ratings: 3,

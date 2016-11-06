@@ -12,7 +12,7 @@ class Hairstyle extends React.Component{
         this.onSelect = this.onSelect.bind(this);
     }
 
-    onSelect(option){
+    onSelect(){
         this.props.onHandleHairstyle(this.refs.Dropdown.value);
     }
 
