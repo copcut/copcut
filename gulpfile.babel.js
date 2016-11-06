@@ -32,9 +32,11 @@ gulp.task('js', () => {
 });
 
 gulp.task('html', () => {
-    const stream = gulp.src('src/**/*.html')
+    const htmlStream = gulp.src('src/**/*.html')
     .pipe(gulp.dest(data.build));
-    return stream;
+
+    const handleBarsStream = gulp.src('src/**/*.handlebars')
+    .pipe(gulp.dest(data.build));
 });
 
 gulp.task('browserify', () => {
@@ -53,11 +55,11 @@ gulp.task('browserify', () => {
     return stream;
 });
 
-gulp.task('compile', ['js', 'browserify', 'html', 'css', 'images']);
+gulp.task('compile', ['js', 'html', 'css', 'images']);
 
 gulp.task('server', ['compile'], () => {
     const stream = nodemon({
-        script: data.build+'/server/server.js',
+        script: data.build+'/server.js',
         watch: data.src,
         tasks: ['compile'],
         env: { 'NODE_ENV': 'development' }

@@ -1,7 +1,7 @@
 import express from 'express'
 import passport from 'passport'
-import User from '../../models/user'
-import authenticate from '../authenticate'
+import User from '../models/user'
+import authenticate from './authenticate'
 
 const router = express.Router();
 

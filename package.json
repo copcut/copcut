@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "startserver": "forever start build/server/server.js",
-    "stopserver": "forever stop build/server/server.js",
-    "restartserver": "forever restart build/server/server.js"
+    "startserver": "forever start build/server.js",
+    "stopserver": "forever stop build/server.js",
+    "restartserver": "forever restart build/server.js"
   },
   "author": "",
   "license": "ISC",

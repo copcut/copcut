@@ -4,17 +4,17 @@ import expressHandlebars from 'express-handlebars'
 import cookieParser from 'cookie-parser' 
 import bodyParser from 'body-parser'
 import passport from 'passport'
-import configurePassport from './config/passport-config'
+import configurePassport from './server/config/passport-config'
 import validator from 'express-validator'
 import session from 'express-session' 
 import path from 'path'
-import Database from './models/database'
-import APIRouter from './routes/apiroutes/apirouter'
+import Database from './server/models/database'
+import APIRouter from './server/routes/apirouter'
 
 import React from 'react'
 import { match, RouterContext } from 'react-router'
 import { renderToString } from 'react-dom/server'
-import routes from '../app/routes'
+import routes from './app/routes'
 
 Database.connect();
 //run this only first time app is run. comment everything else after this out
@@ -26,12 +26,19 @@ Database.initialize().then(() => {
 */
 
 const app = express();
-app.use(express.static(__dirname+'/../static'));
-app.use(express.static(__dirname+'/../app'));
+app.use(express.static(__dirname+'/static'));
+
+//Rendering Application
+const handlebars = expressHandlebars.create({extname: '.handlebars'});
+app.set('views', __dirname+'/app/');
+app.engine('handlebars', handlebars.engine);
+app.set('view engine', 'handlebars');
+
 
 //parse cookies, json
 app.use(cookieParser());
 app.use(bodyParser.json());
+
 //validator middleware for forms
 app.use(validator());
 
@@ -58,7 +65,10 @@ app.use('/api', APIRouter);
 app.get('*', function (req, res) {
 	match({ routes: routes, location: req.url }, (err, redirect, props) => {
 		const html = renderToString(<RouterContext {...props}/>)
-
+		res.render('application', {
+			layout: false,
+			content: html
+		});
 	});
 });
 

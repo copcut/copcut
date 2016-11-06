@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, IndexLink, withRouter } from 'react-router'
 
-export const App = withRouter((props) => {
+export default withRouter((props) => {
 	return (
 		<div>
 			<nav className="navbar navbar-default" id="header">
@@ -29,27 +29,3 @@ export const App = withRouter((props) => {
 		</div>
 	)
 });
-
-export const RegisterBarber = () => {
-	return (
-		<h3>Register Barber</h3>
-	);
-}
-
-export const RegisterUser = () => {
-	return (
-		<h3>Register User</h3>
-	);
-}
-
-export const Login = () => {
-	return (
-		<h3>Login</h3>
-	);
-}
-
-export const Home = () => {
-	return (
-		<h3>Home</h3>
-	);
-}

@@ -1,9 +1,9 @@
 import express from 'express'
-import Barber from '../../models/barber'
-import User from '../../models/user'
+import Barber from '../models/barber'
+import User from '../models/user'
 import passport from 'passport'
-import authenticate from '../authenticate'
-import { UsernameExistsError, EmailExistsError, UsernameEmailExistsError } from '../../config/errors'
+import authenticate from './authenticate'
+import { UsernameExistsError, EmailExistsError, UsernameEmailExistsError } from '../config/errors'
 
 const router = express.Router();
 

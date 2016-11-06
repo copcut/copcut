@@ -1,6 +1,11 @@
 import React from 'react'
 import { Route, IndexRoute } from 'react-router'
-import { App, Home, RegisterBarber, RegisterUser, Login } from './components'
+
+import App from './components/app'
+import Home from './components/home'
+import RegisterUser from './components/registeruser'
+import RegisterBarber from './components/registerbarber'
+import Login from './components/Login'
 
 export default (
 	<Route path="/" component={App}>

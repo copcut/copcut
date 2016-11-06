@@ -1,6 +1,6 @@
 import express from 'express'
-import Message from '../../models/Message'
-import authenticate from '../authenticate'
+import Message from '../models/Message'
+import authenticate from './authenticate'
 
 const router = express.Router();
 

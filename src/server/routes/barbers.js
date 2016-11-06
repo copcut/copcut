@@ -1,7 +1,7 @@
 import express from 'express'
 import passport from 'passport'
-import Barber from '../../models/barber'
-import authenticate from '../authenticate'
+import Barber from '../models/barber'
+import authenticate from './authenticate'
 
 const router = express.Router();
 
