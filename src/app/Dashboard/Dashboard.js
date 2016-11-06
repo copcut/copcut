@@ -12,7 +12,7 @@ import React from 'react'
 
 const DASHBOARD = [
     {
-        barberpic: "i2.mirror.co.uk/incoming/article5423743.ece/ALTERNATES/s615b/MOST-BEAUTIFUL-FACES.jpg",
+        barberpic: "http://i2.mirror.co.uk/incoming/article5423743.ece/ALTERNATES/s615b/MOST-BEAUTIFUL-FACES.jpg",
         firstname: "David",
         lastname: "Cheng",
         venmo: "@danny-cho-3",
