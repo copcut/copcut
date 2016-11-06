@@ -28,7 +28,7 @@ Database.initialize().then(() => {
 const app = express();
 app.use(express.static(__dirname+'/static'));
 
-//Rendering Application
+//Rendering Engine
 const handlebars = expressHandlebars.create({extname: '.handlebars'});
 app.set('views', __dirname+'/app/');
 app.engine('handlebars', handlebars.engine);

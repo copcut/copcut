@@ -41,7 +41,7 @@ gulp.task('html', () => {
 
 gulp.task('browserify', () => {
     const stream = browserify({
-        entries: 'src/app/app.js',
+        entries: 'src/static/app.js',
         debug: true,
     })
     .transform(babelify, {presets: ["es2015", "react"]})
@@ -50,12 +50,12 @@ gulp.task('browserify', () => {
     .pipe(buffer())
     .pipe(sourcemaps.init({loadMaps: true}))
     .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest(data.build+'/app'));
+    .pipe(gulp.dest(data.build+'/static'));
 
     return stream;
 });
 
-gulp.task('compile', ['js', 'html', 'css', 'images']);
+gulp.task('compile', ['js', 'browserify', 'html', 'css', 'images']);
 
 gulp.task('server', ['compile'], () => {
     const stream = nodemon({
