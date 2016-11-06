@@ -230,12 +230,6 @@ footer a{
 #toggle-options h4{
 	color: rgba(0,0,0,0.54);
 }
-md-checkbox{
-	display: block;
-}
-#toggle-options md-datepicker div{
-	vertical-align: middle; /*fixed issue with calendar icon and  input field being unaligned*/
-}
 #profileInfo{
 	padding: 0 2%;
 }
@@ -243,6 +237,7 @@ md-checkbox{
 	width: 100%;
 	text-align: center;
 	position: relative;
+	padding-bottom: 10px;
 }
 .bigger-btn{
 	width: 80%;
