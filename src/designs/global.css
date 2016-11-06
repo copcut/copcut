@@ -230,10 +230,6 @@ footer a{
 #toggle-options h4{
 	color: rgba(0,0,0,0.54);
 }
-#toggle-options .option-selector,.option-selector md-select, .options md-checkbox{
-	margin-top: 0;
-	/*display: block;*/
-}
 md-checkbox{
 	display: block;
 }

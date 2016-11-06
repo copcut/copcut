@@ -3,15 +3,16 @@
 <head>
 	<title>Barbers on Demand</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="copcut.css">
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="semantic.min.css">
+	<script type="text/javascript" src="semantic.min.js"></script>
     <link rel="stylesheet" type="text/css" href="global.css">
+    <link rel="stylesheet" href="jquery-ui.css">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
 </head>
-<body ng-app="BlankApp">
+<body>
 
 <nav class="navbar navbar-default header" id="header">
 	<div class="container-fluid">
@@ -22,7 +23,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<div id="logo-vert"><a href="#" id="logo">CopCut</a></div>
+			<div id="logo-vert"><a href="#" id="logo" style="color: black;">CopCut</a></div>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse" aria-expanded="true">
 		<ul class= "nav navbar-nav">
@@ -182,44 +183,55 @@
 		</div>
 
 		<div flex id="toggle-options">
-			<form>
-				<fieldset>
+			<form class="ui form">
 					<div id="search">
 						<span class="glyphicon glyphicon-search"></span>
 						<input type="text" placeholder="Search" name="srch-term">
 	                </div>
 	                <div class="options">
-
-	                	<div class="option-checkbox">
+	                	<div class="sm-section">
 		                	<h4>Price</h4>
-		                	<md-checkbox ng-model="under11" aria-label="Under $11">Under $11</md-checkbox>
-		                	<md-checkbox ng-model="between1122" aria-label="$11-$20">$11-$20</md-checkbox>
-							<md-checkbox ng-model="above21" aria-label="$21 and above">$21 and above</md-checkbox>
+		                	<div class="ui checkbox block sm-section">
+								<input type="checkbox" name="Under11">
+								<label>Under $11</label>
+							</div>
+		                	<div class="ui checkbox block sm-section">
+								<input type="checkbox" name="11to20">
+								<label>$11-$20</label>
+							</div>
+							<div class="ui checkbox block sm-section">
+								<input type="checkbox" name="above21">
+								<label>$21 and above</label>
+							</div>
 						</div>
-						<div class="option-selector" style="">
+						<div class="sm-section">
 							<h4>Sorting</h4>
-							<md-select ng-model="hairstyle" placeholder="Hairstyle" class="md-no-underline" md-no-asterisk="true">
-					        	<md-option value="default" selected>Popular</md-option>
-					        	<md-option value="taper">Rating</md-option>
-					        	<md-option value="fade">Number of Cuts</md-option>
-					        	<md-option value="buzzcut">Alphabetical</md-option>
-		        			</md-select>
-	        			</div>
-	        			<div class="option-selector">
+							<div class="field">
+							<select>
+								<option>Price(Highest to Lowest)</option>
+								<option>Price(Lowest to Highest)</option>
+								<option>Rating</option>
+								<option>Popularity</option>
+							</select>
+							</div>
+
+	        			<div class="option-selector section">
 							<h4>Hairstyle</h4>
-							<md-select ng-model="hairstyle" placeholder="Hairstyle" class="md-no-underline" md-no-asterisk="true">
-					        	<md-option value="default" selected>All Cuts</md-option>
-					        	<md-option value="taper">Taper</md-option>
-					        	<md-option value="fade">Fade</md-option>
-					        	<md-option value="buzzcut">Buzzcut</md-option>
-					        	<md-option value="bowlcut">Bowlcut</md-option>
-		        			</md-select>
-	        			<div layout="row" div class="md-inline-form">
-	        				<h4>Choose a day</h4>
-							<md-datepicker ng-model="ts"></md-datepicker>
-						</div>
+							<select placeholder="Hairstyle">
+					        	<option value="default" selected>All Cuts</option>
+					        	<option value="taper">Taper</option>
+					        	<option value="fade">Fade</option>
+					        	<option value="buzzcut">Buzzcut</option>
+					        	<option value="bowlcut">Bowlcut</option>
+		        			</select>
+		        			</div>
+	        			<div class="field">
+							<div class="wide field">
+							<label for="datepicker">Day of Cut</label>
+						    <input type="text" id="datepicker">
+						    </div>
+					    </div>
 	                </div>
-				</fieldset>
 			</form>
 		</div>
 	</div>
@@ -239,20 +251,9 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js" 
  integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
- <!-- Angular Material requires Angular.js Libraries -->
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
-
-  <!-- Angular Material Library -->
-  <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
 
  <script type="text/javascript">    
-    /**
-     * You must include the dependency on 'ngMaterial' 
-     */
-     angular.module('BlankApp',['ngMaterial']);
+    $("#datepicker").datepicker();
  </script>
   
 </html>
