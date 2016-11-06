@@ -1,7 +1,8 @@
-/**
- * Created by Victor on 10/14/2016.
- */
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { render } from 'react-dom'
+import { browserHistory, Router } from 'react-router'
+import routes from './routes'
 
-ReactDOM.render(<h1>Hello World</h1>, document.getElementById('app'));
+render((
+	<Router routes={routes} history={browserHistory} />
+), document.getElementById('app'))

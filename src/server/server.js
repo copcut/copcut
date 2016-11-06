@@ -7,31 +7,35 @@ import passport from 'passport'
 import configurePassport from './config/passport-config'
 import validator from 'express-validator'
 import session from 'express-session' 
-import flash from 'connect-flash'
-
+import path from 'path'
 import Database from './models/database'
-
-import HTTPRouter from './routes/httproutes/httprouter'
 import APIRouter from './routes/apiroutes/apirouter'
 
+import React from 'react'
+import { match, RouterContext } from 'react-router'
+import { renderToString } from 'react-dom/server'
+import routes from '../app/routes'
+
 Database.connect();
+//run this only first time app is run. comment everything else after this out
 /*
 Database.initialize().then(() => {
 	 console.log("database initialized");
 	 process.exit(0);
-}); //run this only first time app is run. comment everything else after this out
+});
 */
 
 const app = express();
 app.use(express.static(__dirname+'/../static'));
+app.use(express.static(__dirname+'/../app'));
 
+//parse cookies, json
 app.use(cookieParser());
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
 app.use(bodyParser.json());
+//validator middleware for forms
 app.use(validator());
-app.use(flash());
+
+//Express Session for logins
 app.use(session({
 	secret: 'keyboard cat',
 	resave: false,
@@ -42,10 +46,20 @@ app.use(session({
 	}
 }));
 
+//Configure Strategies and initialize passport/session
 configurePassport(passport);
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use('/api', APIRouter)
-app.use('/', HTTPRouter);
+// REST API
+app.use('/api', APIRouter);
+
+//Wildcard Route for React SPA
+app.get('*', function (req, res) {
+	match({ routes: routes, location: req.url }, (err, redirect, props) => {
+		const html = renderToString(<RouterContext {...props}/>)
+
+	});
+});
+
 app.listen(3000);
