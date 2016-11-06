@@ -1,45 +1,39 @@
 import express from 'express'
-import path from 'path'
-import multer from 'multer'
 import Barber from '../../models/barber'
 import User from '../../models/user'
 import passport from 'passport'
+import authenticate from '../authenticate'
 import { UsernameExistsError, EmailExistsError, UsernameEmailExistsError } from '../../config/errors'
 
-const storage = multer.diskStorage({
-	destination(req, file, cb) {
-		cb(null, path.join(__dirname, '../../uploads'));
-	},
-
-	filename(req, file, cb) {
-		cb(null, req.body.username+'-'+Date.now()+ '-profilepicture.png');
-	}
-});
-
-const upload = multer({ storage: storage });
 const router = express.Router();
 
-router.get('/login', (req, res) => {
-    res.render('login', {error: req.flash('loginMessage'), username: req.flash('loginUsername')});
-    req.flash('loginMessage', '');
-});
+router.post('/login', (req, res, next) => {
+	passport.authenticate('local', (error, user, info) => {
+		if (error) return next(error);
 
-router.post('/login', passport.authenticate('local', {
-	successRedirect : '/',
-	failureRedirect : '/login', 
-	failureFlash : true
-}));
+		if (!user) return res.json({success: false, error: 'Incorrect username or password.'});
+
+		req.login(user, err => {
+			if (err) return next(err);
+			return res.json({success: true});
+		});
+	})(req, res, next);
+});
 
 router.get('/logout', (req, res) => {
-    req.logout();
-    res.redirect('/');
+	req.logout();
+	res.json({success: true});
 });
 
-router.get('/register/user', (req, res) => {
-    res.render('registerUser', {errors: req.flash('errors'), info: req.flash('info')[0]});
+router.delete('/user', authenticate, (req, res) => {
+	const user = req.user.username;
+	req.logout();
+	User.removeUser(user)
+	.then(() => res.json({success: true}))
+	.catch(() => res.json({success: false}));
 });
 
-router.post('/register/user', upload.single(), (req, res) => {
+router.post('/register/user', (req, res) => {
 	const data = {
 		username: req.body.username,
 		firstname: req.body.firstname,
@@ -55,48 +49,34 @@ router.post('/register/user', upload.single(), (req, res) => {
 	req.checkBody('firstname', 'Enter a valid first name.').notEmpty().isAlpha();
 	req.checkBody('middlename', 'Enter a valid middle name.').isAlpha();
 	req.checkBody('lastname', 'Enter a valid last name.').notEmpty().isAlpha();
-	req.checkBody('password', 'Enter a valid password.').notEmpty().isLength({min:6});
+	req.checkBody('password', 'Enter a valid password.').notEmpty();
 	req.checkBody('email', 'Enter a valid email address.').notEmpty().isEmail();
 	req.checkBody('birthday', 'Enter a valid birthday.').notEmpty().isDate();
 	req.checkBody('gender', 'Enter a valid gender.').notEmpty().isAlpha().isLength({min:1, max:1});
 	
 	const errors = req.validationErrors();
 	if(errors) {
-		req.flash('errors', errors);
-		req.flash('info', data);
-		res.redirect('/registerUser');
+		res.json({errors: errors, data: data});
 	}
 	else {
 		User.addUser(data)
-		.then(() => res.redirect('/login'))
+		.then(() => res.json({success: true}))
 		.catch(UsernameExistsError, error => {
-			req.flash('errors', [{msg: 'The username you selected already exists.'}]);
-			req.flash('info', data);
-			res.redirect('/register/user');
+			res.json({success: false, errors: ['The username you selected already exists.'], data: data});
 		})
 		.catch(EmailExistsError, error => {
-			req.flash('errors', [{msg: 'The email you selected already exists.'}]);
-			req.flash('info', data);
-			res.redirect('/register/user');
+			res.json({success: false, errors: ['The email you selected already exists.'], data: data});
 		})
 		.catch(UsernameEmailExistsError, error => {
-			req.flash('errors', [{msg: 'The username you selected already exists.'}, {msg: 'The email you selected already exists.'}]);
-			req.flash('info', data);
-			res.redirect('/register/user');
+			res.json({success: false, errors: ['The username you selected already exists.', 'The email you selected already exists.'], data: data});
 		})
 		.catch(error => {
-			req.flash('errors', [{msg: 'Your request could not be processed.'}]);
-			req.flash('info', data);
-			res.redirect('/register/user');
+			res.json({success: false, errors: ['Your request could not be processed.'], data: data});
 		});
 	}
 });
 
-router.get('/register/barber', (req, res) => {
-    res.render('registerBarber', {errors: req.flash('errors'), info: req.flash('info')[0]});
-});
-
-router.post('/register/barber', upload.single('profilepicture'), (req, res) => {
+router.post('/register/barber', (req, res) => {
 	const data = {
 		username: req.body.username,
 		firstname: req.body.firstname,
@@ -111,7 +91,6 @@ router.post('/register/barber', upload.single('profilepicture'), (req, res) => {
 		country: req.body.country,
 		postcode: req.body.postcode,
 		phonenumber: req.body.phonenumber,
-		profilepicture: req.file.filename,
 		yearscut: req.body.yearscut,
 		description: req.body.description
 	};
@@ -120,7 +99,7 @@ router.post('/register/barber', upload.single('profilepicture'), (req, res) => {
 	req.checkBody('firstname', 'Enter a valid first name.').notEmpty().isAlpha();
 	req.checkBody('middlename', 'Enter a valid middle name.').isAlpha();
 	req.checkBody('lastname', 'Enter a valid last name.').notEmpty().isAlpha();
-	req.checkBody('password', 'Enter a valid password.').notEmpty().isLength({min:6});
+	req.checkBody('password', 'Enter a valid password.').notEmpty();
 	req.checkBody('email', 'Enter a valid email address.').notEmpty().isEmail();
 	req.checkBody('birthday', 'Enter a valid birthday.').notEmpty().isDate();
 	req.checkBody('gender', 'Enter a valid gender.').notEmpty().isAlpha().isLength({min:1, max:1});
@@ -134,32 +113,22 @@ router.post('/register/barber', upload.single('profilepicture'), (req, res) => {
 
 	const errors = req.validationErrors();
 	if(errors) {
-		req.flash('errors', errors);
-		req.flash('info', data);
-		res.redirect('/register/barber');
+		res.json({errors: errors, data: data});
 	}
 	else {
 		Barber.addBarber(data)
-		.then(() => res.redirect('/login'))
+		.then(() => res.json({success: true}))
 		.catch(UsernameExistsError, error => {
-			req.flash('errors', [{msg: 'The username you selected already exists.'}]);
-			req.flash('info', data);
-			res.redirect('/register/barber');
+			res.json({success: false, errors: ['The username you selected already exists.'], data: data});
 		})
 		.catch(EmailExistsError, error => {
-			req.flash('errors', [{msg: 'The email you selected already exists.'}]);
-			req.flash('info', data);
-			res.redirect('/register/barber');
+			res.json({success: false, errors: ['The email you selected already exists.'], data: data});
 		})
 		.catch(UsernameEmailExistsError, error => {
-			req.flash('errors', [{msg: 'The username you selected already exists.'}, {msg: 'The email you selected already exists.'}]);
-			req.flash('info', data);
-			res.redirect('/register/barber');
+			res.json({success: false, errors: ['The username you selected already exists.', 'The email you selected already exists.'], data: data});
 		})
 		.catch(error => {
-			req.flash('errors', [{msg: 'Your request could not be processed.'}]);
-			req.flash('info', data);
-			res.redirect('/register/barber');
+			res.json({success: false, errors: ['Your request could not be processed.'], data: data});
 		});
 	}
 });

@@ -38,7 +38,7 @@ gulp.task('compile', ['js', 'html', 'css', 'images']);
 
 gulp.task('server', ['compile'], () => {
     const stream = nodemon({
-        script: data.build+'/server.js',
+        script: data.build+'/server/server.js',
         watch: data.src,
         tasks: ['compile'],
         env: { 'NODE_ENV': 'development' }

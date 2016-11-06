@@ -29,7 +29,6 @@ const Barber = () => {
 				city: data.city,
 				country: data.country,
 				postcode: data.postcode,
-				profilepicture: data.profilepicture,
 				phonenumber: data.phonenumber,
 				yearscut: data.yearscut,
 				description: data.description
@@ -52,13 +51,23 @@ const Barber = () => {
 		},
 
 		updateBarber(username, data) {
-			const updateInBarbers = id => {
+			const barberData = {
+				address: data.address,
+				city: data.city,
+				country: data.country,
+				postcode: data.postcode,
+				phonenumber: data.phonenumber,
+				yearscut: data.yearscut,
+				description: data.description
+			};
+
+			const updateInBarbers = (id, data) => {
 				return Promise.using(Database.getConnection(), connection => {
 					return connection.queryAsync('UPDATE barbers SET ? WHERE id=?', [data, id]);
 				});
 			}
 			
-			return User.getIdFromUsername(username).then(updateInBarbers);
+			return User.getIdFromUsername(username).then(id => updateInBarbers(id, barberData));
 		},
 
 		getBarber(username) {
@@ -94,17 +103,14 @@ const Barber = () => {
 				   		return Promise.all([getFromBarbers(id), getCuts(id)]);
 				   	})
 				   .then(data => {
-				   		if(data.postcode == null) throw new BarberNotFoundError();
-				   		data[0][0].cuts = data[1];
+				   		data[0][0].cuts = [];
+				   		data[1].forEach(element => {
+				   			data[0][0].cuts.push(element.cut)
+				   		});
 				   		return Promise.resolve(data[0][0]);
 				   });
 		},
-
-		removeBarber(username) {
-			//on delete user it will cascade
-			return User.getIdFromUsername(username).then(id => User.removeUserById(id));
-		},
-
+		
 		updateReviewData(id, rating, oldRating, adding) {
 			const updateQuery = data => {
 				let totalStars = data.reviewnumber * data.averagerating;

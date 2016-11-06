@@ -73,8 +73,9 @@ const User = () => {
 
 		getUsernameFromId(id) {
 			return Promise.using(Database.getConnection(), connection => {
-				return connection.queryAsync('SELECT username, firstname, middlename, lastname FROM users WHERE id=?', id);
+				return connection.queryAsync('SELECT username FROM users WHERE id=?', id);
 			})
+			.then(data => checkIfExists(data, UserNotFoundError, true))
 			.then(data => Promise.resolve(data[0]));
 		},
 
@@ -99,12 +100,46 @@ const User = () => {
 					}).then(rowDataPacket => Promise.resolve(rowDataPacket.insertId));
 		},
 
-		updateUser(username, data) {			
-			const updateUserQuery = values => Promise.using(Database.getConnection(), connection => {
-				return connection.queryAsync('UPDATE users SET ? where username=?', [values, username]);
+		updateUser(username, data) {
+			const userData = {
+				firstname: data.firstname,
+				middlename: data.middlename,
+				lastname: data.lastname,
+				birthday: data.birthday,
+				gender: data.gender
+			};
+
+			return Promise.using(Database.getConnection(), connection => {
+				return connection.queryAsync('UPDATE users SET ? where username=?', [userData, username]);
 			});
+		},
+
+		updateUserById(id, data) {
+			const userData = {
+				firstname: data.firstname,
+				middlename: data.middlename,
+				lastname: data.lastname,
+				birthday: data.birthday,
+				gender: data.gender
+			};
 			
-			return encryptPassword(data).then(updateUserQuery);
+			return Promise.using(Database.getConnection(), connection => {
+				return connection.queryAsync('UPDATE users SET ? where id=?', [userData, id]);
+			});
+		},
+
+		updateSecureFields(username, data) {
+			const userData = {
+				password: req.body.password,
+				email: req.body.email
+			};
+
+			const updateQuery = (data, username) => Promise.using(Database.getConnection(), connection => {
+				return connection.queryAsync('UPDATE users SET ? where username=?', [data, username]);
+			});
+
+			return encryptPassword(userData)
+				   .then(encryptedData => updateQuery(encryptedData, username));
 		},
 
 		removeUser(username) {
@@ -121,8 +156,9 @@ const User = () => {
 
 		getUser(username) {
 			return Promise.using(Database.getConnection(), connection => {
-				return connection.queryAsync('SELECT username, firstname FROM users WHERE username=?', username);
+				return connection.queryAsync('SELECT username, firstname, middlename, lastname, email, birthday, gender FROM users WHERE username=?', username);
 			})
+			.then(data => checkIfExists(data, UserNotFoundError, true))
 			.then(data => Promise.resolve(data[0]));
 		},
 

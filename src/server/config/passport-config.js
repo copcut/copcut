@@ -22,22 +22,19 @@ const configurePassport = passport => {
 		**  1) Return Promise.resolve passing in an array of done's arguments
 		**	2) Call Promise.asCallback with spread set to true
 		*/
-		User.getUser(username).then((user) => {
-			if(!user) {
-				req.flash('loginUsername', username);
-				return Promise.resolve([false, req.flash('loginMessage', 'Incorrect username or password.')]);
-			}
-
+		User.getUser(username)
+		.then(user => {
 			return User.checkPassword(username, password).then(validPassword => {
 				if(validPassword) {
 					return Promise.resolve([user]);
 				}
 				else {
-					req.flash('loginUsername', username);
-					return Promise.resolve([false, req.flash('loginMessage', 'Incorrect username or password.')]);
+					return Promise.resolve([false]);
 				}
 			});
-		}).asCallback(done, {spread: true});
+		})
+		.catch(error => Promise.resolve([false]))
+		.asCallback(done, {spread: true});
 	}));
 }
 
