@@ -8,41 +8,41 @@ import SortingAlgo from './SortingAlgo'
 class BarberDisplay extends React.Component {
     render(){
         var rows = [];
-        var lastPointer = null;
-        var prices = [];
-        //set prices range
-        this.props.prices.forEach((price) => {
-            if(price){
-                var temp = 10* (price.index + 1);
-                prices.push(temp);
-            }
-        });
-        // fix Search to be non case sensitive and can look for any of them
         this.props.barbers.forEach((barber) => {
-            if(barber.firstname.concat(' ', barber.lastname).indexOf(this.props.filterBarber) === -1 ||
-                barber.cuts.indexOf(this.props.hairstyle) < 0 ||
-                prices.length < 0){
-                return;
+            //rate filtering
+            var pricecategory;
+            if( barber.rate <= 10){
+                pricecategory = 0;
             }
-            // include logic for prices, sorting
-            // include unique key for each component
-            if(barber.cuts.indexOf(this.props.hairstyle) >= 0 ){
-                //barber.rate
-                    var shortDescription = barber.description.substring(0, 120);
-                    rows.push(
-                        <IndividualBarber
-                            keys = {barber.id}
-                            name={barber.firstname.concat(' ', barber.lastname)}
-                            yoe={barber.yearscut}
-                            description={shortDescription}
-                            rate={barber.rate}
-                            review={barber.ratings}
-                            picture={barber.profilepicture}
-                        />
-                    );
-                }
-        });
+            if(barber.rate > 10 && barber.rate <= 20){
+                pricecategory = 1;
+            }
+            if(barber.rate > 20){
+                pricecategory = 2;
+            }
 
+            //search filtering
+            var matcher_first = new RegExp("/" + barber.firstname + "/", "i");
+            var matcher_last = new RegExp("/" + barber.lastname + "/", "i");
+
+            if ((matcher_first.test(this.props.filterBarber) || matcher_last.test(this.props.filterBarber)) &&
+                barber.cuts.indexOf(this.props.hairstyle) >= 0 &&
+                this.props.prices[pricecategory] == true)
+            {
+                var shortDescription = barber.description.substring(0, 120);
+                rows.push(
+                    <IndividualBarber
+                        keys={barber.id}
+                        name={barber.firstname.concat(' ', barber.lastname)}
+                        yoe={barber.yearscut}
+                        description={shortDescription}
+                        rate={barber.rate}
+                        review={barber.ratings}
+                        picture={barber.profilepicture}
+                    />
+                );
+            }
+        });
         //include sorting by whatever on cuts.
 
         return(
