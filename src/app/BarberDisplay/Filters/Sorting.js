@@ -3,8 +3,8 @@ import Dropdown from 'react-dropdown'
 
 
 const options = [
-    'Popular', 'Rating', 'Number of Cuts', 'Alphabetical'
-]
+    'Price(Highest to Lowest)', 'Price(Lowest to Highest)', 'Rating', 'Popularity'
+];
 
 class Sorting extends React.Component{
 

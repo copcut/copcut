@@ -18,6 +18,7 @@ const BARBERS = [
         profilepicture: "i2.mirror.co.uk/incoming/article5423743.ece/ALTERNATES/s615b/MOST-BEAUTIFUL-FACES.jpg",
         rate: 13,
         yearscut: 3,
+        totalcuts: 4,
         description: "I've ben cutting hair since I was born. I love touching people's hair"
     },
     {
@@ -29,6 +30,7 @@ const BARBERS = [
         profilepicture: "i2.mirror.co.uk/incoming/article5423743.ece/ALTERNATES/s615b/MOST-BEAUTIFUL-FACES.jpg",
         rate: 16,
         yearscut: 3,
+        totalcuts: 5,
         description: "I've ben cutting hair since I was born. I love touching people's hair"
     },
     {
@@ -40,6 +42,7 @@ const BARBERS = [
         profilepicture: "i2.mirror.co.uk/incoming/article5423743.ece/ALTERNATES/s615b/MOST-BEAUTIFUL-FACES.jpg",
         rate: 16,
         yearscut: 3,
+        totalcuts: 6,
         description: "I've ben cutting hair since I was born. I love touching people's hair"
     },
     {
@@ -50,6 +53,7 @@ const BARBERS = [
         ratings: 4.2,
         profilepicture: "i2.mirror.co.uk/incoming/article5423743.ece/ALTERNATES/s615b/MOST-BEAUTIFUL-FACES.jpg",
         rate: 21,
+        totalcuts: 7,
         yearscut: 3,
         description: "I've ben cutting hair since I was born. I love touching people's hair"
     },
@@ -61,6 +65,7 @@ const BARBERS = [
         ratings: 3,
         profilepicture: "i2.mirror.co.uk/incoming/article5423743.ece/ALTERNATES/s615b/MOST-BEAUTIFUL-FACES.jpg",
         rate: 29,
+        totalcuts: 8,
         yearscut: 3,
         description: "I've ben cutting hair since I was born. I love touching people's hair"
     },
@@ -72,7 +77,7 @@ class Barbers extends React.Component{
         this.state = {
             filterBarber: '',
             prices : [false, false, false],
-            sorting: 0,
+            sorting: '',
             hairstyle: "Select an option"
         };
         this.handleSearch = this.handleSearch.bind(this);

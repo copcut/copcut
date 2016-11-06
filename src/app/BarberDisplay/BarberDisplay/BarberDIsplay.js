@@ -3,11 +3,24 @@
  */
 import React from 'react'
 import IndividualBarber from './IndividualBarber'
-import SortingAlgo from './SortingAlgo'
 
 class BarberDisplay extends React.Component {
     render(){
         var rows = [];
+        //sorting algos
+        if(this.props.sorting == 'Price(Highest to Lowest)'){
+            barbers.sort(function(a,b){return b.rate-a.rate});
+        }
+        if(this.props.sorting == 'Price(Lowest to Highest)'){
+            barbers.sort(function(a,b){return a.rate - b.rate});
+        }
+        if(this.props.sorting == 'Rating'){
+            barber.sort(function(a,b){return b.ratings - a.ratings});
+        }
+        if(this.props.sorting == 'Popularity'){
+            barber.sort(function(a,b){return b.totalcuts - a.totalcuts});
+        }
+
         this.props.barbers.forEach((barber) => {
             //rate filtering
             var pricecategory;
@@ -43,7 +56,6 @@ class BarberDisplay extends React.Component {
                 );
             }
         });
-        //include sorting by whatever on cuts.
 
         return(
             <table>
