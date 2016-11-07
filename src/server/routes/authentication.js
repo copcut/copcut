@@ -8,6 +8,7 @@ import { UsernameExistsError, EmailExistsError, UsernameEmailExistsError } from 
 const router = express.Router();
 
 router.post('/login', (req, res, next) => {
+	console.log("called");
 	passport.authenticate('local', (error, user, info) => {
 		if (error) return next(error);
 
