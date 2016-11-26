@@ -42,7 +42,10 @@ class BarberDisplay extends React.Component {
                 barber.cuts.indexOf(this.props.hairstyle) >= 0 &&
                 (this.props.prices[pricecategory] == true || this.props.prices.every(elem => elem == false)))
                 */
-            if( barber.cuts.indexOf(this.props.hairstyle) >= 0)
+
+
+            // ERROR IS IN HAIRCUT FILTERS
+            if( barber.cuts === this.props.hairstyle)
             {
                 var shortDescription = barber.description.substring(0, 120);
                 rows.push(
